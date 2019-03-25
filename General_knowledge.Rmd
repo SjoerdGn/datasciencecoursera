@@ -1,0 +1,73 @@
+---
+title: "Knowledge C_Data_Scientist_Toolbox"
+author: "Sjoerd Gnodde"
+date: "26 februari 2019"
+output: html_document
+---
+
+# Get help
+
+```{Code getting information}
+?rnorm
+
+help.search('rnorm')
+
+args('rnorm')
+
+rnorm
+```
+
+
+```{Reading text file}
+con <- url("http://jhsph.edu", "r")
+x <- readLines(con)
+head(x)
+```
+## Types of data analysis
+* Descriptive
+* Exploratory
+* Inferential
+* Predictive
+* Causal
+* Mechanisic
+
+## Share
+* github
+* figshare
+* https://github.com/jtleek/datasharing
+
+## Confounding
+An external reason explains both data sets
+
+Corrolation is not causation
+
+## Put people into random groups
+
+## Errors
+* True positive
+* True negative
+* False positive
+* False negative
+
+## Quantities
+* Sensitivity (P(positive test|disease))
+* Specificivity (P(negative test|no disease))
+* Positive predictive value (P(disease|positive test))
+* Negative predictive value (P(no disease|negative test))
+* Accuracy (P(Correct outcome))
+
+## Data dredging: too long looking for significant result
+
+
+# R programming
+
+## Programming in RGui
+
+Set working directory:
+File -> Change dir
+
+Get working directory:
+```{Get working directory}
+getwd()
+```
+
