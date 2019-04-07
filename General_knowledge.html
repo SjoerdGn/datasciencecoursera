@@ -193,16 +193,22 @@ $(document).ready(function () {
 
 <div id="get-help" class="section level1">
 <h1>Get help</h1>
-<pre class="code"><code>?rnorm
+<pre class="r"><code># ?rnorm
 
-help.search('rnorm')
+# help.search('rnorm')
 
-args('rnorm')
+# args('rnorm')
 
-rnorm</code></pre>
-<pre class="reading"><code>con &lt;- url(&quot;http://jhsph.edu&quot;, &quot;r&quot;)
+# rnorm</code></pre>
+<pre class="r"><code>con &lt;- url(&quot;http://jhsph.edu&quot;, &quot;r&quot;)
 x &lt;- readLines(con)
 head(x)</code></pre>
+<pre><code>## [1] &quot;&lt;!DOCTYPE html&gt;&quot;                                               
+## [2] &quot;&lt;html lang=\&quot;en\&quot;&gt;&quot;                                            
+## [3] &quot;&quot;                                                              
+## [4] &quot;&lt;head&gt;&quot;                                                        
+## [5] &quot;&lt;meta charset=\&quot;utf-8\&quot; /&gt;&quot;                                    
+## [6] &quot;&lt;title&gt;Johns Hopkins Bloomberg School of Public Health&lt;/title&gt;&quot;</code></pre>
 <div id="types-of-data-analysis" class="section level2">
 <h2>Types of data analysis</h2>
 <ul>
@@ -219,7 +225,266 @@ head(x)</code></pre>
 <ul>
 <li>github</li>
 <li>figshare</li>
+<li><a href="https://github.com/jtleek/datasharing" class="uri">https://github.com/jtleek/datasharing</a></li>
 </ul>
+</div>
+<div id="confounding" class="section level2">
+<h2>Confounding</h2>
+<p>An external reason explains both data sets</p>
+<p>Corrolation is not causation</p>
+</div>
+<div id="put-people-into-random-groups" class="section level2">
+<h2>Put people into random groups</h2>
+</div>
+<div id="errors" class="section level2">
+<h2>Errors</h2>
+<ul>
+<li>True positive</li>
+<li>True negative</li>
+<li>False positive</li>
+<li>False negative</li>
+</ul>
+</div>
+<div id="quantities" class="section level2">
+<h2>Quantities</h2>
+<ul>
+<li>Sensitivity (P(positive test|disease))</li>
+<li>Specificivity (P(negative test|no disease))</li>
+<li>Positive predictive value (P(disease|positive test))</li>
+<li>Negative predictive value (P(no disease|negative test))</li>
+<li>Accuracy (P(Correct outcome))</li>
+</ul>
+</div>
+<div id="data-dredging" class="section level2">
+<h2>Data dredging</h2>
+<p>Too long looking for significant result</p>
+</div>
+</div>
+<div id="r-programming" class="section level1">
+<h1>R programming</h1>
+<div id="programming-in-rgui" class="section level2">
+<h2>Programming in RGui</h2>
+<p>Set working directory: File -&gt; Change dir</p>
+<p>Get working directory:</p>
+<pre class="r"><code>getwd()</code></pre>
+<pre><code>## [1] &quot;C:/Users/Sjoerd Gn/Documents/git/datasciencecoursera&quot;</code></pre>
+</div>
+<div id="data-types" class="section level2">
+<h2>Data types</h2>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
+<pre class="r"><code>x &lt;- c(0.5, 0.6)
+x1 &lt;- c(T,F) #True, FAlse
+x2 &lt;- c(TRUE, FALSE)
+x3 &lt;- 9:30
+x4 &lt;- vector(&quot;numeric&quot;, length = 10)</code></pre>
+<p>Mixing will end up to 1 type</p>
+<pre class="r"><code>x5 &lt;- as.character(x)</code></pre>
+</div>
+<div id="list" class="section level3">
+<h3>List</h3>
+<p>Can be different items</p>
+<pre class="r"><code>x6 &lt;- list(1, &quot;a&quot;, TRUE, 1.1)</code></pre>
+</div>
+<div id="matrices" class="section level3">
+<h3>Matrices</h3>
+<p>Vector with a dimension</p>
+<pre class="r"><code>matrix(nrow = 5, ncol = 3)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   NA   NA   NA
+## [2,]   NA   NA   NA
+## [3,]   NA   NA   NA
+## [4,]   NA   NA   NA
+## [5,]   NA   NA   NA</code></pre>
+<pre class="r"><code>a &lt;- 1:3
+b &lt;- 10:12
+x7 &lt;- cbind(a,b)
+x8 &lt;- rbind(a,b)</code></pre>
+</div>
+<div id="factors" class="section level3">
+<h3>Factors</h3>
+<p>Categorical data</p>
+<pre class="r"><code>x9 &lt;- factor(c(&quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;,&quot;yes&quot;, &quot;no&quot;))
+x9</code></pre>
+<pre><code>## [1] yes no  yes yes no 
+## Levels: no yes</code></pre>
+<pre class="r"><code>table(x9)</code></pre>
+<pre><code>## x9
+##  no yes 
+##   2   3</code></pre>
+<pre class="r"><code>unclass(x9)</code></pre>
+<pre><code>## [1] 2 1 2 2 1
+## attr(,&quot;levels&quot;)
+## [1] &quot;no&quot;  &quot;yes&quot;</code></pre>
+<pre class="r"><code>attr(x9, &quot;levels&quot;)</code></pre>
+<pre><code>## [1] &quot;no&quot;  &quot;yes&quot;</code></pre>
+<pre class="r"><code>factor(c(&quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;,&quot;yes&quot;, &quot;no&quot;), levels=c(&quot;yes&quot;, &quot;no&quot;))</code></pre>
+<pre><code>## [1] yes no  yes yes no 
+## Levels: yes no</code></pre>
+</div>
+<div id="missing-values" class="section level3">
+<h3>Missing Values</h3>
+<pre class="r"><code>lst1 &lt;- c(1, NA, NaN)
+is.na(lst1)</code></pre>
+<pre><code>## [1] FALSE  TRUE  TRUE</code></pre>
+<pre class="r"><code>is.nan(lst1) # also misses what it should be</code></pre>
+<pre><code>## [1] FALSE FALSE  TRUE</code></pre>
+<p>nan is na, but na is not necessarily nan</p>
+</div>
+<div id="data-frames" class="section level3">
+<h3>Data Frames</h3>
+<p>Can store different types per column</p>
+<p>Attribute called <code>row.names</code></p>
+<p>Call with <code>read.table()</code> or <code>read.csv()</code> or <code>data.frame()</code></p>
+<p>Convert to matrix with <code>data.matrix()</code></p>
+<pre class="r"><code>x10 &lt;- data.frame(foo = 1:4, bar = c(T, F, F, T))
+x10</code></pre>
+<pre><code>##   foo   bar
+## 1   1  TRUE
+## 2   2 FALSE
+## 3   3 FALSE
+## 4   4  TRUE</code></pre>
+<pre class="r"><code>nrow(x10)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>ncol(x10)</code></pre>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="names-attribute" class="section level3">
+<h3>Names attribute</h3>
+<pre class="r"><code>x11 &lt;- 1:3
+names(x11) &lt;- c(&quot;foo&quot;, &quot;bar&quot;, &quot;norf&quot;)
+x11</code></pre>
+<pre><code>##  foo  bar norf 
+##    1    2    3</code></pre>
+<pre class="r"><code>x12 &lt;- list(a=1, b=2, c=3)
+x12</code></pre>
+<pre><code>## $a
+## [1] 1
+## 
+## $b
+## [1] 2
+## 
+## $c
+## [1] 3</code></pre>
+<pre class="r"><code>x13 &lt;- matrix(1:4, nrow=2, ncol=2)
+dimnames(x13) &lt;- list(c(&quot;a&quot;, &quot;b&quot;), c(&quot;c&quot;, &quot;d&quot;))
+x13</code></pre>
+<pre><code>##   c d
+## a 1 3
+## b 2 4</code></pre>
+</div>
+<div id="reading-tabular-data" class="section level3">
+<h3>Reading Tabular Data</h3>
+<pre class="r"><code># read.table(), read.csv() [see docstring]
+# readLines()
+# source()
+# dget()
+# load()
+# unserialize()</code></pre>
+</div>
+<div id="writing-data" class="section level3">
+<h3>Writing data</h3>
+<pre class="r"><code># write.table()
+# writeLines()
+# dump()
+# dput()
+# save()
+# serialize()</code></pre>
+</div>
+<div id="large-datasets" class="section level3">
+<h3>Large datasets</h3>
+<p>For example: first read first 100 lines, then use these classes.</p>
+<pre class="r"><code># set.comment = &quot;&quot;</code></pre>
+<p>2^20 bytes/mb</p>
+<p>about twice the amount data needed to load it</p>
+<p><code>dput</code> reconstructs</p>
+<p><code>dump</code> slightly different</p>
+</div>
+<div id="interfaces-to-the-outside-world" class="section level3">
+<h3>Interfaces to the outside world</h3>
+<pre class="r"><code># file -&gt; opens a connection to a file
+# gqfile -&gt; connection to gzip
+# bzfile -&gt; connection to bzip2
+# url opens webpage
+
+# con &lt;- file(&quot;foo.txt&quot;, &quot;r&quot;)
+# data &lt;- read.csv(con)
+# close(con)
+
+# same as just read.csv(&quot;foo.txt&quot;)</code></pre>
+</div>
+<div id="subsetting" class="section level3">
+<h3>Subsetting</h3>
+<p><code>[]</code> subsets same class</p>
+<p><code>[[]]</code> extract elements (single)</p>
+<p><code>$</code> extract by name</p>
+<pre class="r"><code>x13 &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+x13[2]</code></pre>
+<pre><code>## [1] &quot;b&quot;</code></pre>
+<pre class="r"><code>x13[2:3]</code></pre>
+<pre><code>## [1] &quot;b&quot; &quot;c&quot;</code></pre>
+<pre class="r"><code>x13[x13&gt;&quot;a&quot;]</code></pre>
+<pre><code>## [1] &quot;b&quot; &quot;c&quot;</code></pre>
+<pre class="r"><code>x14 &lt;- x13 &gt; &quot;a&quot;
+x14</code></pre>
+<pre><code>## [1] FALSE  TRUE  TRUE</code></pre>
+<p>Subsetting lists</p>
+<pre class="r"><code>x15 &lt;- list(foo=1:4, bar=0.7)
+x15[1]</code></pre>
+<pre><code>## $foo
+## [1] 1 2 3 4</code></pre>
+<pre class="r"><code>x15[[1]]</code></pre>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<pre class="r"><code>x15$bar</code></pre>
+<pre><code>## [1] 0.7</code></pre>
+<pre class="r"><code>x15[&quot;bar&quot;]</code></pre>
+<pre><code>## $bar
+## [1] 0.7</code></pre>
+<pre class="r"><code>x15[[&quot;bar&quot;]]</code></pre>
+<pre><code>## [1] 0.7</code></pre>
+<pre class="r"><code>x15[c(1,2)]</code></pre>
+<pre><code>## $foo
+## [1] 1 2 3 4
+## 
+## $bar
+## [1] 0.7</code></pre>
+<pre class="r"><code>name &lt;- &quot;bar&quot;
+x15[[name]]</code></pre>
+<pre><code>## [1] 0.7</code></pre>
+<p>Further subsetting lists</p>
+<pre class="r"><code>x16 &lt;- list(a = list(10, 11,12), b = c(3.14, 1.71))
+x16[[c(1,3)]]</code></pre>
+<pre><code>## [1] 12</code></pre>
+<pre class="r"><code>x16[[1]][[3]]</code></pre>
+<pre><code>## [1] 12</code></pre>
+<p>Matrices exactly as expected. First row, then column.</p>
+<pre class="r"><code># x[1, ] # is the complete first row</code></pre>
+<p>By setting drop=False one can get a matrix back instead of a vector</p>
+<p>Partial matching</p>
+<pre class="r"><code>x17 &lt;- list(aardvark = 1:5)
+x17$a</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<pre class="r"><code>x17[[&quot;a&quot;]]</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>x17[[&quot;a&quot;, exact = FALSE]]</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>Removing NA values</p>
+<pre class="r"><code>x18 &lt;- c(1, 2, NA, NA, 5)
+bad &lt;- is.na(x18)
+x18[!bad]</code></pre>
+<pre><code>## [1] 1 2 5</code></pre>
+<pre class="r"><code># both
+# good &lt;- complete.cases(x,y)
+
+# remove rows with nans
+# good &lt;- complete.cases(data)
+# data[good, ][1:6, ]</code></pre>
+</div>
+<div id="matrix-multiplication" class="section level3">
+<h3>Matrix multiplication</h3>
+<p><code>*</code>, <code>/</code> element wise</p>
+<p><code>%*%</code> matrix multiplication</p>
+</div>
 </div>
 </div>
 
