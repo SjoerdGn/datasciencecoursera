@@ -284,5 +284,86 @@ x18[!bad]
 
 ```%*%``` matrix multiplication
 
+# Control Structures
+
+### If else
+```{r}
+x19 <- 1
+if(x19>1){
+print('x19>0')
+} else if(x19==1){
+print('x19=1')
+} else{
+print('x19<=0')
+}
 
 
+x20 <- if(x19==1){
+  2
+} else{
+  1
+}
+x20
+```
+
+### For loops
+
+```{r}
+for(i in 1:5){
+  print(i)
+}
+
+x21 <- c("a", "b", "c", "d")
+for(i in 1:4){
+  print(x21[i])
+}
+
+for(i in seq_along(x21)){
+  print(x21[i])
+}
+
+for(letter in x21){
+  print(letter)
+}
+
+for(i in 1:4) print(x21[i])
+```
+
+### Nested for loop
+```{r}
+x22 <- matrix(1:6, 2, 3)
+
+for(i in seq_len(nrow(x22))){
+  for(j in seq_len(ncol(x22))){
+    print(x22[i,j])
+  }
+}
+```
+
+### Why loop
+```{r}
+count <- 0
+while(count<6){
+  print(count)
+  count <- count + 1
+}
+```
+R checks conditions from left to right
+
+### Repeat
+Repeat until break
+
+### Next
+Go to the next repeat in the loop. For example in for loop. 
+```{r}
+
+for(i in 1:9){
+  if(i==5 | i ==7){
+    next
+  }
+  print(i)
+}
+```
+
+### Return
+Exits function

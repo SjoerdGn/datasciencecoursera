@@ -487,6 +487,122 @@ x18[!bad]</code></pre>
 </div>
 </div>
 </div>
+<div id="control-structures" class="section level1">
+<h1>Control Structures</h1>
+<div id="if-else" class="section level3">
+<h3>If else</h3>
+<pre class="r"><code>x19 &lt;- 1
+if(x19&gt;1){
+print('x19&gt;0')
+} else if(x19==1){
+print('x19=1')
+} else{
+print('x19&lt;=0')
+}</code></pre>
+<pre><code>## [1] &quot;x19=1&quot;</code></pre>
+<pre class="r"><code>x20 &lt;- if(x19==1){
+  2
+} else{
+  1
+}
+x20</code></pre>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="for-loops" class="section level3">
+<h3>For loops</h3>
+<pre class="r"><code>for(i in 1:5){
+  print(i)
+}</code></pre>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<pre class="r"><code>x21 &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
+for(i in 1:4){
+  print(x21[i])
+}</code></pre>
+<pre><code>## [1] &quot;a&quot;
+## [1] &quot;b&quot;
+## [1] &quot;c&quot;
+## [1] &quot;d&quot;</code></pre>
+<pre class="r"><code>for(i in seq_along(x21)){
+  print(x21[i])
+}</code></pre>
+<pre><code>## [1] &quot;a&quot;
+## [1] &quot;b&quot;
+## [1] &quot;c&quot;
+## [1] &quot;d&quot;</code></pre>
+<pre class="r"><code>for(letter in x21){
+  print(letter)
+}</code></pre>
+<pre><code>## [1] &quot;a&quot;
+## [1] &quot;b&quot;
+## [1] &quot;c&quot;
+## [1] &quot;d&quot;</code></pre>
+<pre class="r"><code>for(i in 1:4) print(x21[i])</code></pre>
+<pre><code>## [1] &quot;a&quot;
+## [1] &quot;b&quot;
+## [1] &quot;c&quot;
+## [1] &quot;d&quot;</code></pre>
+</div>
+<div id="nested-for-loop" class="section level3">
+<h3>Nested for loop</h3>
+<pre class="r"><code>x22 &lt;- matrix(1:6, 2, 3)
+
+for(i in seq_len(nrow(x22))){
+  for(j in seq_len(ncol(x22))){
+    print(x22[i,j])
+  }
+}</code></pre>
+<pre><code>## [1] 1
+## [1] 3
+## [1] 5
+## [1] 2
+## [1] 4
+## [1] 6</code></pre>
+</div>
+<div id="why-loop" class="section level3">
+<h3>Why loop</h3>
+<pre class="r"><code>count &lt;- 0
+while(count&lt;6){
+  print(count)
+  count &lt;- count + 1
+}</code></pre>
+<pre><code>## [1] 0
+## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<p>R checks conditions from left to right</p>
+</div>
+<div id="repeat" class="section level3">
+<h3>Repeat</h3>
+<p>Repeat until break</p>
+</div>
+<div id="next" class="section level3">
+<h3>Next</h3>
+<p>Go to the next repeat in the loop. For example in for loop.</p>
+<pre class="r"><code>for(i in 1:9){
+  if(i==5 | i ==7){
+    next
+  }
+  print(i)
+}</code></pre>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 6
+## [1] 8
+## [1] 9</code></pre>
+</div>
+<div id="return" class="section level3">
+<h3>Return</h3>
+<p>Exits function</p>
+</div>
+</div>
 
 
 
