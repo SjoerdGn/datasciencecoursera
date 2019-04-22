@@ -367,3 +367,93 @@ for(i in 1:9){
 
 ### Return
 Exits function
+
+### First R function
+```{r}
+columnmean <- function(y, removeNA = TRUE){
+  nc <- ncol(y)
+  means <- numeric(nc)
+  for(i in 1:nc){
+    means[i] <- mean(y[, i], na.rm = removeNA)
+  }
+  means
+}
+```
+
+### Lazy evaluation
+If necessary argument in function is not used, no error is output.
+```{r}
+f1 <- function(a,b){
+  print(a)
+}
+f1("Hello World")
+```
+
+### ... Argument
+For example when you call a plot function in your function. Absorbs all arguments in ... and passes it on to ... in other function. 
+```{r}
+myplot <- function(x,y, type = "l", ...){
+  plot(x, y, type = type, ...)
+}
+```
+Can also be used for _generic functions_
+
+Or for unknown number of argumens
+```{r}
+args(paste)
+args(cat)
+``` 
+Positional argumenting not possible anymore after this.
+
+### Scoping rules - Symbol binding
+_Double defined_
+R searches for environment
+* Global environment (user workspace)
+* Other packages
+
+Users can load packages into the workspace. Namespace get moved into second postion, after Global Environment. 
+
+#### Free variable
+_The values of free variables are searched for in the environment in which the function was defined_
+If it does not find it, it goes to the next parent.
+Parents and children of environments. Every environment has one parent. Top environment is global environment or namespace of package.
+
+### Function in function
+```{r}
+make.power <- function(n){
+  pow <- function(x){
+    x^n
+  }
+  pow
+}
+
+cube <- make.power(3)
+square <- make.power(2)
+cube(3)
+square(3)
+
+ls(environment(cube))
+get("n", environment(cube))
+```
+R calls value from where it is defined, not from where it is _called_. 
+
+## Coding standards
+* indent
+* max width
+* basic formulae: make more, smaller formulae
+
+## Date and times
+Dates are stored internally as the number of seconds since `1970-01-01`
+Times are stored internally as the number of seconds since `1970-01-01`
+```{r}
+x23 <- Sys.time()
+x24 <- as.POSIXlt(x23)
+names(unclass(x24))
+
+datestring <- c("November 9, 2011 9:10", "December 9, 2011 9:10")
+x25 <- strptime(datestring, "%B %d, %Y %H:%M")
+x25
+class(x25)
+```
+Recognises difference in time zones.
+Plot recognises `datetime` objects.

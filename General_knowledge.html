@@ -602,6 +602,97 @@ while(count&lt;6){
 <h3>Return</h3>
 <p>Exits function</p>
 </div>
+<div id="first-r-function" class="section level3">
+<h3>First R function</h3>
+<pre class="r"><code>columnmean &lt;- function(y, removeNA = TRUE){
+  nc &lt;- ncol(y)
+  means &lt;- numeric(nc)
+  for(i in 1:nc){
+    means[i] &lt;- mean(y[, i], na.rm = removeNA)
+  }
+  means
+}</code></pre>
+</div>
+<div id="lazy-evaluation" class="section level3">
+<h3>Lazy evaluation</h3>
+<p>If necessary argument in function is not used, no error is output.</p>
+<pre class="r"><code>f1 &lt;- function(a,b){
+  print(a)
+}
+f1(&quot;Hello World&quot;)</code></pre>
+<pre><code>## [1] &quot;Hello World&quot;</code></pre>
+</div>
+<div id="argument" class="section level3">
+<h3>… Argument</h3>
+<p>For example when you call a plot function in your function. Absorbs all arguments in … and passes it on to … in other function.</p>
+<pre class="r"><code>myplot &lt;- function(x,y, type = &quot;l&quot;, ...){
+  plot(x, y, type = type, ...)
+}</code></pre>
+<p>Can also be used for <em>generic functions</em></p>
+<p>Or for unknown number of argumens</p>
+<pre class="r"><code>args(paste)</code></pre>
+<pre><code>## function (..., sep = &quot; &quot;, collapse = NULL) 
+## NULL</code></pre>
+<pre class="r"><code>args(cat)</code></pre>
+<pre><code>## function (..., file = &quot;&quot;, sep = &quot; &quot;, fill = FALSE, labels = NULL, 
+##     append = FALSE) 
+## NULL</code></pre>
+<p>Positional argumenting not possible anymore after this.</p>
+</div>
+<div id="scoping-rules---symbol-binding" class="section level3">
+<h3>Scoping rules - Symbol binding</h3>
+<p><em>Double defined</em> R searches for environment * Global environment (user workspace) * Other packages</p>
+<p>Users can load packages into the workspace. Namespace get moved into second postion, after Global Environment.</p>
+<div id="free-variable" class="section level4">
+<h4>Free variable</h4>
+<p><em>The values of free variables are searched for in the environment in which the function was defined</em> If it does not find it, it goes to the next parent. Parents and children of environments. Every environment has one parent. Top environment is global environment or namespace of package.</p>
+</div>
+</div>
+<div id="function-in-function" class="section level3">
+<h3>Function in function</h3>
+<pre class="r"><code>make.power &lt;- function(n){
+  pow &lt;- function(x){
+    x^n
+  }
+  pow
+}
+
+cube &lt;- make.power(3)
+square &lt;- make.power(2)
+cube(3)</code></pre>
+<pre><code>## [1] 27</code></pre>
+<pre class="r"><code>square(3)</code></pre>
+<pre><code>## [1] 9</code></pre>
+<pre class="r"><code>ls(environment(cube))</code></pre>
+<pre><code>## [1] &quot;n&quot;   &quot;pow&quot;</code></pre>
+<pre class="r"><code>get(&quot;n&quot;, environment(cube))</code></pre>
+<pre><code>## [1] 3</code></pre>
+<p>R calls value from where it is defined, not from where it is <em>called</em>.</p>
+</div>
+<div id="coding-standards" class="section level2">
+<h2>Coding standards</h2>
+<ul>
+<li>indent</li>
+<li>max width</li>
+<li>basic formulae: make more, smaller formulae</li>
+</ul>
+</div>
+<div id="date-and-times" class="section level2">
+<h2>Date and times</h2>
+<p>Dates are stored internally as the number of seconds since <code>1970-01-01</code> Times are stored internally as the number of seconds since <code>1970-01-01</code></p>
+<pre class="r"><code>x23 &lt;- Sys.time()
+x24 &lt;- as.POSIXlt(x23)
+names(unclass(x24))</code></pre>
+<pre><code>##  [1] &quot;sec&quot;    &quot;min&quot;    &quot;hour&quot;   &quot;mday&quot;   &quot;mon&quot;    &quot;year&quot;   &quot;wday&quot;  
+##  [8] &quot;yday&quot;   &quot;isdst&quot;  &quot;zone&quot;   &quot;gmtoff&quot;</code></pre>
+<pre class="r"><code>datestring &lt;- c(&quot;November 9, 2011 9:10&quot;, &quot;December 9, 2011 9:10&quot;)
+x25 &lt;- strptime(datestring, &quot;%B %d, %Y %H:%M&quot;)
+x25</code></pre>
+<pre><code>## [1] &quot;2011-11-09 09:10:00 CET&quot; &quot;2011-12-09 09:10:00 CET&quot;</code></pre>
+<pre class="r"><code>class(x25)</code></pre>
+<pre><code>## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;</code></pre>
+<p>Recognises difference in time zones. Plot recognises <code>datetime</code> objects.</p>
+</div>
 </div>
 
 
