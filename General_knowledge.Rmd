@@ -457,3 +457,46 @@ class(x25)
 ```
 Recognises difference in time zones.
 Plot recognises `datetime` objects.
+
+## Loop Functions
+### lapply
+Loop over a list and evaluate a function on each element. `lapply` takes three arguments: (1) a list X; (2) a function (or the name of a function) FUN; (3) other arguments via its ... argument. If X is not a list, it will be coerced to a list using as.list.
+```{r}
+#help(lapply)
+
+x25 <- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
+lapply(x25, mean)
+
+# Anonymous functions
+x26 <- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2)) 
+lapply(x26, function(elt) elt[,1])
+```
+### sapply
+Tries to simplify results. For example if every object in list has length 1, returns vector. All same length > 1, returns matrix.
+
+### apply
+It writes shorter than for loop, but is not faster. 
+
+`function (X, MARGIN, FUN, ...)`
+* X is an array
+* MARGIN is an integer vector indicating which margins should be "retained".
+* FUN is a function to be applied
+* ... is for other arguments to be passed to FUN
+```{r}
+#str(apply)
+x27 <- matrix(rnorm(50), 10, 5)
+apply(x27, 2, mean) # mean over the columns
+apply(x27, 1, sum) # sum over the rows
+``` 
+
+These already exist in 
+```{r}
+rowSums(x27)
+rowMeans(x27)
+colSums(x27)
+colMeans(x27)
+```
+
+```{r}
+apply(x27, 1, quantile, probs = c(0.05, 0.95))
+```
