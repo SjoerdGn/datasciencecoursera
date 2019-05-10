@@ -340,7 +340,7 @@ for(i in seq_len(nrow(x22))){
 }
 ```
 
-### Why loop
+### While loop
 ```{r}
 count <- 0
 while(count<6){
@@ -459,7 +459,7 @@ Recognises difference in time zones.
 Plot recognises `datetime` objects.
 
 ## Loop Functions
-### lapply
+### lapply()
 Loop over a list and evaluate a function on each element. `lapply` takes three arguments: (1) a list X; (2) a function (or the name of a function) FUN; (3) other arguments via its ... argument. If X is not a list, it will be coerced to a list using as.list.
 ```{r}
 #help(lapply)
@@ -471,10 +471,10 @@ lapply(x25, mean)
 x26 <- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2)) 
 lapply(x26, function(elt) elt[,1])
 ```
-### sapply
+### sapply()
 Tries to simplify results. For example if every object in list has length 1, returns vector. All same length > 1, returns matrix.
 
-### apply
+### apply()
 It writes shorter than for loop, but is not faster. 
 
 `function (X, MARGIN, FUN, ...)`
@@ -501,7 +501,7 @@ colMeans(x27)
 apply(x27, 1, quantile, probs = c(0.05, 0.95))
 ```
 
-### mapply
+### mapply()
 
 Multivariate: multiple list arguments
 ```{r}
@@ -512,7 +512,7 @@ noise <- function(n, mean, sd){
 mapply(noise, 1:5, 5:1, 2)
 ```
 
-### tapply
+### tapply()
 For vectors with same length
 ```{r}
 x28 <- c(rnorm(10), runif(10), rnorm(10))
@@ -520,7 +520,7 @@ f <- gl(3,10)
 tapply(x28, f, mean)
 ``` 
 
-## split
+## split()
 Splitting arbitrary dataframes
 ```{r}
 x29 <- rnorm(10)
@@ -556,4 +556,28 @@ split(x29, list(f1,f2), drop=TRUE)
 
 ````{r}
 #options(error = recover)
+```
+
+
+### str() function
+You can put any object inside
+other option than `summary()`
+```{r}
+x30 <- rnorm(100, 2, 4)
+summary(x30)
+str(x30)
+```
+
+
+### Random number generation
+Functions:
+* d for density
+* r for random number generation
+* p for cumulative distribution
+* q for quantile function
+```{r}
+set.seed(1)
+rnorm(5)
+rpois(10,1)
+ppois(2,2)
 ```

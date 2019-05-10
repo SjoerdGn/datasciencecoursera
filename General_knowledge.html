@@ -562,8 +562,8 @@ for(i in seq_len(nrow(x22))){
 ## [1] 4
 ## [1] 6</code></pre>
 </div>
-<div id="why-loop" class="section level3">
-<h3>Why loop</h3>
+<div id="while-loop" class="section level3">
+<h3>While loop</h3>
 <pre class="r"><code>count &lt;- 0
 while(count&lt;6){
   print(count)
@@ -696,7 +696,7 @@ x25</code></pre>
 <div id="loop-functions" class="section level2">
 <h2>Loop Functions</h2>
 <div id="lapply" class="section level3">
-<h3>lapply</h3>
+<h3>lapply()</h3>
 <p>Loop over a list and evaluate a function on each element. <code>lapply</code> takes three arguments: (1) a list X; (2) a function (or the name of a function) FUN; (3) other arguments via its … argument. If X is not a list, it will be coerced to a list using as.list.</p>
 <pre class="r"><code>#help(lapply)
 
@@ -706,13 +706,13 @@ lapply(x25, mean)</code></pre>
 ## [1] 2.5
 ## 
 ## $b
-## [1] 0.4670521
+## [1] 0.1920535
 ## 
 ## $c
-## [1] 0.8496165
+## [1] 1.328372
 ## 
 ## $d
-## [1] 5.013893</code></pre>
+## [1] 4.912612</code></pre>
 <pre class="r"><code># Anonymous functions
 x26 &lt;- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2)) 
 lapply(x26, function(elt) elt[,1])</code></pre>
@@ -723,41 +723,41 @@ lapply(x26, function(elt) elt[,1])</code></pre>
 ## [1] 1 2 3</code></pre>
 </div>
 <div id="sapply" class="section level3">
-<h3>sapply</h3>
+<h3>sapply()</h3>
 <p>Tries to simplify results. For example if every object in list has length 1, returns vector. All same length &gt; 1, returns matrix.</p>
 </div>
 <div id="apply" class="section level3">
-<h3>apply</h3>
+<h3>apply()</h3>
 <p>It writes shorter than for loop, but is not faster.</p>
 <p><code>function (X, MARGIN, FUN, ...)</code> * X is an array * MARGIN is an integer vector indicating which margins should be “retained”. * FUN is a function to be applied * … is for other arguments to be passed to FUN</p>
 <pre class="r"><code>#str(apply)
 x27 &lt;- matrix(rnorm(50), 10, 5)
 apply(x27, 2, mean) # mean over the columns</code></pre>
-<pre><code>## [1]  0.183917059  0.036105998 -0.039934283  0.001975618  0.098704328</code></pre>
+<pre><code>## [1]  0.206291642 -0.490653018 -0.754128175 -0.004921735 -0.261510771</code></pre>
 <pre class="r"><code>apply(x27, 1, sum) # sum over the rows</code></pre>
-<pre><code>##  [1] -3.1967144  1.3868620  1.1730647  0.1024856  5.0886175  2.0989987
-##  [7]  1.7387886 -0.7203897 -0.5128125 -4.3512133</code></pre>
+<pre><code>##  [1]  1.594308 -4.210242  2.067112 -1.596273 -1.844532 -1.838644 -3.297711
+##  [8]  2.418859 -3.200385 -3.141712</code></pre>
 <p>These already exist in</p>
 <pre class="r"><code>rowSums(x27)</code></pre>
-<pre><code>##  [1] -3.1967144  1.3868620  1.1730647  0.1024856  5.0886175  2.0989987
-##  [7]  1.7387886 -0.7203897 -0.5128125 -4.3512133</code></pre>
+<pre><code>##  [1]  1.594308 -4.210242  2.067112 -1.596273 -1.844532 -1.838644 -3.297711
+##  [8]  2.418859 -3.200385 -3.141712</code></pre>
 <pre class="r"><code>rowMeans(x27)</code></pre>
-<pre><code>##  [1] -0.63934288  0.27737240  0.23461294  0.02049712  1.01772351
-##  [6]  0.41979974  0.34775773 -0.14407794 -0.10256250 -0.87024267</code></pre>
+<pre><code>##  [1]  0.3188616 -0.8420484  0.4134224 -0.3192546 -0.3689064 -0.3677288
+##  [7] -0.6595423  0.4837718 -0.6400771 -0.6283424</code></pre>
 <pre class="r"><code>colSums(x27)</code></pre>
-<pre><code>## [1]  1.83917059  0.36105998 -0.39934283  0.01975618  0.98704328</code></pre>
+<pre><code>## [1]  2.06291642 -4.90653018 -7.54128175 -0.04921735 -2.61510771</code></pre>
 <pre class="r"><code>colMeans(x27)</code></pre>
-<pre><code>## [1]  0.183917059  0.036105998 -0.039934283  0.001975618  0.098704328</code></pre>
+<pre><code>## [1]  0.206291642 -0.490653018 -0.754128175 -0.004921735 -0.261510771</code></pre>
 <pre class="r"><code>apply(x27, 1, quantile, probs = c(0.05, 0.95))</code></pre>
-<pre><code>##          [,1]      [,2]       [,3]      [,4]      [,5]       [,6]
-## 5%  -2.032308 -1.032328 -0.6172161 -2.089597 -0.470886 -0.1544619
-## 95%  0.168262  2.573332  1.0456172  1.590927  1.961714  1.3743140
-##           [,7]       [,8]       [,9]       [,10]
-## 5%  -0.5596955 -1.5222963 -1.8147800 -2.00675778
-## 95%  1.8023909  0.8296629  0.8256585 -0.08338178</code></pre>
+<pre><code>##           [,1]        [,2]       [,3]       [,4]       [,5]      [,6]
+## 5%  -0.4890573 -2.26751471 -0.7940754 -1.9260333 -1.3582255 -1.811979
+## 95%  1.4233764  0.03108799  1.8407149  0.6604772  0.7544746  1.792668
+##           [,7]       [,8]        [,9]      [,10]
+## 5%  -1.4310156 -0.8002729 -1.07131226 -1.4915647
+## 95%  0.6291597  1.5645416 -0.07950807  0.2204686</code></pre>
 </div>
 <div id="mapply" class="section level3">
-<h3>mapply</h3>
+<h3>mapply()</h3>
 <p>Multivariate: multiple list arguments</p>
 <pre class="r"><code>noise &lt;- function(n, mean, sd){
   rnorm(n, mean, sd)
@@ -765,32 +765,32 @@ apply(x27, 2, mean) # mean over the columns</code></pre>
 
 mapply(noise, 1:5, 5:1, 2)</code></pre>
 <pre><code>## [[1]]
-## [1] 4.723177
+## [1] 3.675624
 ## 
 ## [[2]]
-## [1] 5.197702 2.878501
+## [1] 4.351523 2.493737
 ## 
 ## [[3]]
-## [1] 5.809332 2.607004 1.944220
+## [1] 0.9514249 1.7162614 3.1944765
 ## 
 ## [[4]]
-## [1]  1.689542 -0.586300  4.434794  1.407561
+## [1] -1.5316664  0.3230562 -0.8181809  2.2258231
 ## 
 ## [[5]]
-## [1]  0.3205751  0.2065172  1.4289870  0.6020442 -3.6276546</code></pre>
+## [1] 2.9015090 3.4959936 2.9871044 0.5643833 0.5794329</code></pre>
 </div>
 <div id="tapply" class="section level3">
-<h3>tapply</h3>
+<h3>tapply()</h3>
 <p>For vectors with same length</p>
 <pre class="r"><code>x28 &lt;- c(rnorm(10), runif(10), rnorm(10))
 f &lt;- gl(3,10)
 tapply(x28, f, mean)</code></pre>
-<pre><code>##           1           2           3 
-## -0.07290083  0.49612670 -0.05869573</code></pre>
+<pre><code>##          1          2          3 
+##  0.1215331  0.1885088 -0.1105099</code></pre>
 </div>
 </div>
 <div id="split" class="section level2">
-<h2>split</h2>
+<h2>split()</h2>
 <p>Splitting arbitrary dataframes</p>
 <pre class="r"><code>x29 &lt;- rnorm(10)
 f1 &lt;- gl(2,5)
@@ -800,52 +800,52 @@ interaction(f1, f2)</code></pre>
 ## Levels: 1.1 2.1 1.2 2.2 1.3 2.3 1.4 2.4 1.5 2.5</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2))</code></pre>
 <pre><code>## $`1.1`
-## [1] 0.9069608 0.7084770
+## [1] 0.3870473 1.5054147
 ## 
 ## $`2.1`
 ## numeric(0)
 ## 
 ## $`1.2`
-## [1] -2.152662  2.798165
+## [1]  0.5866939 -0.3888326
 ## 
 ## $`2.2`
 ## numeric(0)
 ## 
 ## $`1.3`
-## [1] -0.2199149
+## [1] -0.9018108
 ## 
 ## $`2.3`
-## [1] -1.767211
+## [1] 0.9210676
 ## 
 ## $`1.4`
 ## numeric(0)
 ## 
 ## $`2.4`
-## [1]  0.1526371 -0.3032281
+## [1] -0.2210073 -1.5517550
 ## 
 ## $`1.5`
 ## numeric(0)
 ## 
 ## $`2.5`
-## [1] -0.8227696  0.1393134</code></pre>
+## [1] -0.7382512  0.6728594</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2), drop=TRUE)</code></pre>
 <pre><code>## $`1.1`
-## [1] 0.9069608 0.7084770
+## [1] 0.3870473 1.5054147
 ## 
 ## $`1.2`
-## [1] -2.152662  2.798165
+## [1]  0.5866939 -0.3888326
 ## 
 ## $`1.3`
-## [1] -0.2199149
+## [1] -0.9018108
 ## 
 ## $`2.3`
-## [1] -1.767211
+## [1] 0.9210676
 ## 
 ## $`2.4`
-## [1]  0.1526371 -0.3032281
+## [1] -0.2210073 -1.5517550
 ## 
 ## $`2.5`
-## [1] -0.8227696  0.1393134</code></pre>
+## [1] -0.7382512  0.6728594</code></pre>
 </div>
 <div id="debugging" class="section level2">
 <h2>Debugging</h2>
@@ -870,6 +870,27 @@ interaction(f1, f2)</code></pre>
 #lm(test3-test4)</code></pre>
 <p><code>debug()</code> opens <code>Browse[2]</code>, which goes through the back-end code. Press <code>n</code> to go to the next line</p>
 <pre class="r"><code>#options(error = recover)</code></pre>
+</div>
+<div id="str-function" class="section level3">
+<h3>str() function</h3>
+<p>You can put any object inside other option than <code>summary()</code></p>
+<pre class="r"><code>x30 &lt;- rnorm(100, 2, 4)
+summary(x30)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  -6.890  -1.297   1.372   1.771   4.604  10.280</code></pre>
+<pre class="r"><code>str(x30)</code></pre>
+<pre><code>##  num [1:100] 3.117 2.31 -3.287 -0.204 -2.164 ...</code></pre>
+</div>
+<div id="random-number-generation" class="section level3">
+<h3>Random number generation</h3>
+<p>Functions: * d for density * r for random number generation * p for cumulative distribution * q for quantile function</p>
+<pre class="r"><code>set.seed(1)
+rnorm(5)</code></pre>
+<pre><code>## [1] -0.6264538  0.1836433 -0.8356286  1.5952808  0.3295078</code></pre>
+<pre class="r"><code>rpois(10,1)</code></pre>
+<pre><code>##  [1] 0 0 1 1 2 1 1 4 1 2</code></pre>
+<pre class="r"><code>ppois(2,2)</code></pre>
+<pre><code>## [1] 0.6766764</code></pre>
 </div>
 </div>
 </div>
