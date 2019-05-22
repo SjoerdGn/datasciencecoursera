@@ -706,13 +706,13 @@ lapply(x25, mean)</code></pre>
 ## [1] 2.5
 ## 
 ## $b
-## [1] 0.1920535
+## [1] -0.1013594
 ## 
 ## $c
-## [1] 1.328372
+## [1] 0.6517409
 ## 
 ## $d
-## [1] 4.912612</code></pre>
+## [1] 4.921121</code></pre>
 <pre class="r"><code># Anonymous functions
 x26 &lt;- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2)) 
 lapply(x26, function(elt) elt[,1])</code></pre>
@@ -733,28 +733,28 @@ lapply(x26, function(elt) elt[,1])</code></pre>
 <pre class="r"><code>#str(apply)
 x27 &lt;- matrix(rnorm(50), 10, 5)
 apply(x27, 2, mean) # mean over the columns</code></pre>
-<pre><code>## [1]  0.206291642 -0.490653018 -0.754128175 -0.004921735 -0.261510771</code></pre>
+<pre><code>## [1] -0.3076822 -0.2895288  0.1348177  0.2119545  0.2580201</code></pre>
 <pre class="r"><code>apply(x27, 1, sum) # sum over the rows</code></pre>
-<pre><code>##  [1]  1.594308 -4.210242  2.067112 -1.596273 -1.844532 -1.838644 -3.297711
-##  [8]  2.418859 -3.200385 -3.141712</code></pre>
+<pre><code>##  [1] -1.54755650  1.30583046 -0.80258957  2.00860539 -0.60713671
+##  [6] -0.09291599  3.12872421 -1.03826819 -1.48305498 -0.79582425</code></pre>
 <p>These already exist in</p>
 <pre class="r"><code>rowSums(x27)</code></pre>
-<pre><code>##  [1]  1.594308 -4.210242  2.067112 -1.596273 -1.844532 -1.838644 -3.297711
-##  [8]  2.418859 -3.200385 -3.141712</code></pre>
+<pre><code>##  [1] -1.54755650  1.30583046 -0.80258957  2.00860539 -0.60713671
+##  [6] -0.09291599  3.12872421 -1.03826819 -1.48305498 -0.79582425</code></pre>
 <pre class="r"><code>rowMeans(x27)</code></pre>
-<pre><code>##  [1]  0.3188616 -0.8420484  0.4134224 -0.3192546 -0.3689064 -0.3677288
-##  [7] -0.6595423  0.4837718 -0.6400771 -0.6283424</code></pre>
+<pre><code>##  [1] -0.3095113  0.2611661 -0.1605179  0.4017211 -0.1214273 -0.0185832
+##  [7]  0.6257448 -0.2076536 -0.2966110 -0.1591648</code></pre>
 <pre class="r"><code>colSums(x27)</code></pre>
-<pre><code>## [1]  2.06291642 -4.90653018 -7.54128175 -0.04921735 -2.61510771</code></pre>
+<pre><code>## [1] -3.076822 -2.895288  1.348177  2.119545  2.580201</code></pre>
 <pre class="r"><code>colMeans(x27)</code></pre>
-<pre><code>## [1]  0.206291642 -0.490653018 -0.754128175 -0.004921735 -0.261510771</code></pre>
+<pre><code>## [1] -0.3076822 -0.2895288  0.1348177  0.2119545  0.2580201</code></pre>
 <pre class="r"><code>apply(x27, 1, quantile, probs = c(0.05, 0.95))</code></pre>
-<pre><code>##           [,1]        [,2]       [,3]       [,4]       [,5]      [,6]
-## 5%  -0.4890573 -2.26751471 -0.7940754 -1.9260333 -1.3582255 -1.811979
-## 95%  1.4233764  0.03108799  1.8407149  0.6604772  0.7544746  1.792668
-##           [,7]       [,8]        [,9]      [,10]
-## 5%  -1.4310156 -0.8002729 -1.07131226 -1.4915647
-## 95%  0.6291597  1.5645416 -0.07950807  0.2204686</code></pre>
+<pre><code>##          [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## 5%  -2.395271 -0.6154991 -1.0500395 -0.3660025 -1.0124381 -0.8177086
+## 95%  1.476191  1.2528943  0.8864343  0.9195018  0.4916406  1.1647724
+##           [,7]       [,8]       [,9]     [,10]
+## 5%  0.07372063 -1.4721074 -1.0129444 -1.351029
+## 95% 1.11255803  0.9084316  0.4386376  1.069721</code></pre>
 </div>
 <div id="mapply" class="section level3">
 <h3>mapply()</h3>
@@ -765,19 +765,19 @@ apply(x27, 2, mean) # mean over the columns</code></pre>
 
 mapply(noise, 1:5, 5:1, 2)</code></pre>
 <pre><code>## [[1]]
-## [1] 3.675624
+## [1] 3.748889
 ## 
 ## [[2]]
-## [1] 4.351523 2.493737
+## [1] 4.933037 6.845967
 ## 
 ## [[3]]
-## [1] 0.9514249 1.7162614 3.1944765
+## [1] 4.737947 1.561954 3.956526
 ## 
 ## [[4]]
-## [1] -1.5316664  0.3230562 -0.8181809  2.2258231
+## [1]  2.7087572  0.6707699  0.1856953 -0.1029913
 ## 
 ## [[5]]
-## [1] 2.9015090 3.4959936 2.9871044 0.5643833 0.5794329</code></pre>
+## [1] 0.4014142 0.9289983 2.0910784 2.3258851 2.4507804</code></pre>
 </div>
 <div id="tapply" class="section level3">
 <h3>tapply()</h3>
@@ -785,8 +785,8 @@ mapply(noise, 1:5, 5:1, 2)</code></pre>
 <pre class="r"><code>x28 &lt;- c(rnorm(10), runif(10), rnorm(10))
 f &lt;- gl(3,10)
 tapply(x28, f, mean)</code></pre>
-<pre><code>##          1          2          3 
-##  0.1215331  0.1885088 -0.1105099</code></pre>
+<pre><code>##           1           2           3 
+##  0.06236612  0.45374244 -0.09616280</code></pre>
 </div>
 </div>
 <div id="split" class="section level2">
@@ -800,52 +800,52 @@ interaction(f1, f2)</code></pre>
 ## Levels: 1.1 2.1 1.2 2.2 1.3 2.3 1.4 2.4 1.5 2.5</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2))</code></pre>
 <pre><code>## $`1.1`
-## [1] 0.3870473 1.5054147
+## [1]  0.2978863 -2.2306422
 ## 
 ## $`2.1`
 ## numeric(0)
 ## 
 ## $`1.2`
-## [1]  0.5866939 -0.3888326
+## [1] -2.0331010  0.5239927
 ## 
 ## $`2.2`
 ## numeric(0)
 ## 
 ## $`1.3`
-## [1] -0.9018108
+## [1] -0.5424792
 ## 
 ## $`2.3`
-## [1] 0.9210676
+## [1] -0.3264108
 ## 
 ## $`1.4`
 ## numeric(0)
 ## 
 ## $`2.4`
-## [1] -0.2210073 -1.5517550
+## [1] -0.8010050 -0.9200981
 ## 
 ## $`1.5`
 ## numeric(0)
 ## 
 ## $`2.5`
-## [1] -0.7382512  0.6728594</code></pre>
+## [1] -1.2403437  0.5319764</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2), drop=TRUE)</code></pre>
 <pre><code>## $`1.1`
-## [1] 0.3870473 1.5054147
+## [1]  0.2978863 -2.2306422
 ## 
 ## $`1.2`
-## [1]  0.5866939 -0.3888326
+## [1] -2.0331010  0.5239927
 ## 
 ## $`1.3`
-## [1] -0.9018108
+## [1] -0.5424792
 ## 
 ## $`2.3`
-## [1] 0.9210676
+## [1] -0.3264108
 ## 
 ## $`2.4`
-## [1] -0.2210073 -1.5517550
+## [1] -0.8010050 -0.9200981
 ## 
 ## $`2.5`
-## [1] -0.7382512  0.6728594</code></pre>
+## [1] -1.2403437  0.5319764</code></pre>
 </div>
 <div id="debugging" class="section level2">
 <h2>Debugging</h2>
@@ -877,9 +877,9 @@ interaction(f1, f2)</code></pre>
 <pre class="r"><code>x30 &lt;- rnorm(100, 2, 4)
 summary(x30)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  -6.890  -1.297   1.372   1.771   4.604  10.280</code></pre>
+## -7.5288  0.5423  2.3268  2.6493  5.1044 13.2208</code></pre>
 <pre class="r"><code>str(x30)</code></pre>
-<pre><code>##  num [1:100] 3.117 2.31 -3.287 -0.204 -2.164 ...</code></pre>
+<pre><code>##  num [1:100] 3.563 6.838 0.641 -3.306 1.564 ...</code></pre>
 </div>
 <div id="random-number-generation" class="section level3">
 <h3>Random number generation</h3>
@@ -891,6 +891,36 @@ rnorm(5)</code></pre>
 <pre><code>##  [1] 0 0 1 1 2 1 1 4 1 2</code></pre>
 <pre class="r"><code>ppois(2,2)</code></pre>
 <pre><code>## [1] 0.6766764</code></pre>
+</div>
+<div id="random-sampling" class="section level3">
+<h3>Random Sampling</h3>
+<pre class="r"><code>set.seed(1)
+sample(1:10, 4)</code></pre>
+<pre><code>## [1] 3 4 5 7</code></pre>
+<pre class="r"><code>sample(1:10, 4)</code></pre>
+<pre><code>## [1] 3 9 8 5</code></pre>
+<pre class="r"><code>sample(letters, 5)</code></pre>
+<pre><code>## [1] &quot;q&quot; &quot;b&quot; &quot;e&quot; &quot;x&quot; &quot;p&quot;</code></pre>
+<pre class="r"><code>sample(1:10, replace = TRUE)</code></pre>
+<pre><code>##  [1]  4  8  5  8 10  4  8 10  3  7</code></pre>
+</div>
+<div id="r-profiler" class="section level3">
+<h3>R Profiler</h3>
+<pre class="r"><code>system.time(
+  
+  for(i in 1:20000){
+  x31 &lt;- i
+}
+)</code></pre>
+<pre><code>##    user  system elapsed 
+##    0.01    0.00    0.02</code></pre>
+<p>Do not use <code>system.time()</code> and <code>Rprof()</code> together.</p>
+<pre class="r"><code>#Rprof(
+#  for(i in 1:20000){
+#  x31 &lt;- i
+#}
+#)
+#summaryRprof()</code></pre>
 </div>
 </div>
 </div>

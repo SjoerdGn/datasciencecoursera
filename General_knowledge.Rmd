@@ -581,3 +581,37 @@ rnorm(5)
 rpois(10,1)
 ppois(2,2)
 ```
+
+
+### Random Sampling
+
+```{r}
+set.seed(1)
+sample(1:10, 4)
+sample(1:10, 4)
+sample(letters, 5)
+sample(1:10, replace = TRUE)
+```
+
+### R Profiler
+
+```{r}
+system.time(
+  
+  for(i in 1:20000){
+  x31 <- i
+}
+)
+```
+
+Do not use `system.time()` and `Rprof()` together. 
+
+```{r}
+
+#Rprof(
+#  for(i in 1:20000){
+#  x31 <- i
+#}
+#)
+#summaryRprof()
+```
