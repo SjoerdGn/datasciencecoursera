@@ -571,10 +571,10 @@ str(x30)
 
 ### Random number generation
 Functions:
-* d for density
-* r for random number generation
-* p for cumulative distribution
-* q for quantile function
+*d for density
+*r for random number generation
+*p for cumulative distribution
+*q for quantile function
 ```{r}
 set.seed(1)
 rnorm(5)
@@ -615,3 +615,31 @@ Do not use `system.time()` and `Rprof()` together.
 #)
 #summaryRprof()
 ```
+
+# Getting and Cleaning Data
+
+
+## Checking for and creating directories
+```{r}
+getwd()
+if(!file.exists("data")){
+  dir.create("data")
+}
+```
+
+## Getting data from the web
+
+```{r}
+fileUrl <- "https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accessType=DOWNLOAD"
+download.file(fileUrl, destfile = "./data/cameras.csv", method = "curl")
+list.files("./data")
+
+dateDownloaded <- date()
+dateDownloaded
+```
+
+
+
+
+
+
