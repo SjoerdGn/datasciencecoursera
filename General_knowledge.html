@@ -706,13 +706,13 @@ lapply(x25, mean)</code></pre>
 ## [1] 2.5
 ## 
 ## $b
-## [1] 0.284229
+## [1] 0.4012803
 ## 
 ## $c
-## [1] 0.7570964
+## [1] 0.9714967
 ## 
 ## $d
-## [1] 5.026049</code></pre>
+## [1] 4.89394</code></pre>
 <pre class="r"><code># Anonymous functions
 x26 &lt;- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2)) 
 lapply(x26, function(elt) elt[,1])</code></pre>
@@ -733,28 +733,28 @@ lapply(x26, function(elt) elt[,1])</code></pre>
 <pre class="r"><code>#str(apply)
 x27 &lt;- matrix(rnorm(50), 10, 5)
 apply(x27, 2, mean) # mean over the columns</code></pre>
-<pre><code>## [1]  0.093498155  0.016871978  0.261345556 -0.006900477 -0.057847268</code></pre>
+<pre><code>## [1]  0.437710553 -0.002415436  0.223883549 -0.103004595  0.160446491</code></pre>
 <pre class="r"><code>apply(x27, 1, sum) # sum over the rows</code></pre>
-<pre><code>##  [1]  0.6554417  2.2519147 -0.7266296 -1.3550078  2.0410830  1.8852365
-##  [7]  3.8072732 -1.5406891 -4.7948284  0.8458852</code></pre>
+<pre><code>##  [1] -4.5635545  3.8147065 -3.5257745  3.7354722  2.3709794  2.2459757
+##  [7] -0.9587655  0.1004261  2.0081990  1.9385412</code></pre>
 <p>These already exist in</p>
 <pre class="r"><code>rowSums(x27)</code></pre>
-<pre><code>##  [1]  0.6554417  2.2519147 -0.7266296 -1.3550078  2.0410830  1.8852365
-##  [7]  3.8072732 -1.5406891 -4.7948284  0.8458852</code></pre>
+<pre><code>##  [1] -4.5635545  3.8147065 -3.5257745  3.7354722  2.3709794  2.2459757
+##  [7] -0.9587655  0.1004261  2.0081990  1.9385412</code></pre>
 <pre class="r"><code>rowMeans(x27)</code></pre>
-<pre><code>##  [1]  0.1310883  0.4503829 -0.1453259 -0.2710016  0.4082166  0.3770473
-##  [7]  0.7614546 -0.3081378 -0.9589657  0.1691770</code></pre>
+<pre><code>##  [1] -0.91271090  0.76294130 -0.70515490  0.74709445  0.47419589
+##  [6]  0.44919514 -0.19175310  0.02008522  0.40163980  0.38770824</code></pre>
 <pre class="r"><code>colSums(x27)</code></pre>
-<pre><code>## [1]  0.93498155  0.16871978  2.61345556 -0.06900477 -0.57847268</code></pre>
+<pre><code>## [1]  4.37710553 -0.02415436  2.23883549 -1.03004595  1.60446491</code></pre>
 <pre class="r"><code>colMeans(x27)</code></pre>
-<pre><code>## [1]  0.093498155  0.016871978  0.261345556 -0.006900477 -0.057847268</code></pre>
+<pre><code>## [1]  0.437710553 -0.002415436  0.223883549 -0.103004595  0.160446491</code></pre>
 <pre class="r"><code>apply(x27, 1, quantile, probs = c(0.05, 0.95))</code></pre>
-<pre><code>##           [,1]       [,2]      [,3]       [,4]       [,5]       [,6]
-## 5%  -0.5104468 -0.8865462 -1.390386 -0.8447558 -0.5378684 -0.3117835
-## 95%  0.5747071  2.2360053  1.168092  0.4560551  1.2213185  1.0466343
-##            [,7]       [,8]      [,9]      [,10]
-## 5%  -0.07496739 -1.4624913 -1.247539 -1.2673775
-## 95%  1.77448303  0.8162623 -0.719645  0.9204585</code></pre>
+<pre><code>##           [,1]       [,2]       [,3]      [,4]       [,5]       [,6]
+## 5%  -1.9006832 -0.3261045 -1.6884614 0.1096202 -0.2259256 -0.4399672
+## 95% -0.2526343  1.9168650 -0.1755453 1.1017743  1.2224612  1.6807739
+##           [,7]       [,8]       [,9]      [,10]
+## 5%  -0.7725172 -0.8912993 -0.2532909 -0.9421374
+## 95%  0.1570886  1.7274217  1.3486131  1.6818718</code></pre>
 </div>
 <div id="mapply" class="section level3">
 <h3>mapply()</h3>
@@ -765,19 +765,19 @@ apply(x27, 2, mean) # mean over the columns</code></pre>
 
 mapply(noise, 1:5, 5:1, 2)</code></pre>
 <pre><code>## [[1]]
-## [1] 4.094871
+## [1] 1.76933
 ## 
 ## [[2]]
-## [1] 4.290318 5.800296
+## [1] 5.547618 2.776042
 ## 
 ## [[3]]
-## [1]  2.7302342  4.9554982 -0.5197629
+## [1] 3.637766 3.957131 3.798507
 ## 
 ## [[4]]
-## [1]  1.3751142  4.0919913  1.4654916 -0.9259208
+## [1] 4.6984493 1.3475150 0.7566419 2.5010456
 ## 
 ## [[5]]
-## [1]  2.1862234 -2.6259432  1.2478500  0.2081635  0.5151852</code></pre>
+## [1]  3.8645405 -0.5163471  1.2740010  1.4748247  1.6631493</code></pre>
 </div>
 <div id="tapply" class="section level3">
 <h3>tapply()</h3>
@@ -785,8 +785,8 @@ mapply(noise, 1:5, 5:1, 2)</code></pre>
 <pre class="r"><code>x28 &lt;- c(rnorm(10), runif(10), rnorm(10))
 f &lt;- gl(3,10)
 tapply(x28, f, mean)</code></pre>
-<pre><code>##         1         2         3 
-## 0.2661832 0.5072082 0.2774975</code></pre>
+<pre><code>##          1          2          3 
+## -0.3458747  0.4712330  0.3393168</code></pre>
 </div>
 </div>
 <div id="split" class="section level2">
@@ -800,52 +800,52 @@ interaction(f1, f2)</code></pre>
 ## Levels: 1.1 2.1 1.2 2.2 1.3 2.3 1.4 2.4 1.5 2.5</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2))</code></pre>
 <pre><code>## $`1.1`
-## [1]  1.361579 -0.309989
+## [1] -0.7347686  1.7018570
 ## 
 ## $`2.1`
 ## numeric(0)
 ## 
 ## $`1.2`
-## [1]  2.4149075 -0.4093991
+## [1] 0.1405306 0.2770183
 ## 
 ## $`2.2`
 ## numeric(0)
 ## 
 ## $`1.3`
-## [1] -1.233625
+## [1] 0.03013919
 ## 
 ## $`2.3`
-## [1] -1.590378
+## [1] 0.8114819
 ## 
 ## $`1.4`
 ## numeric(0)
 ## 
 ## $`2.4`
-## [1]  0.8389939 -0.8891999
+## [1] -2.5208593 -0.6922802
 ## 
 ## $`1.5`
 ## numeric(0)
 ## 
 ## $`2.5`
-## [1] -1.1634688  0.4328731</code></pre>
+## [1] -0.6951777 -0.1327793</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2), drop=TRUE)</code></pre>
 <pre><code>## $`1.1`
-## [1]  1.361579 -0.309989
+## [1] -0.7347686  1.7018570
 ## 
 ## $`1.2`
-## [1]  2.4149075 -0.4093991
+## [1] 0.1405306 0.2770183
 ## 
 ## $`1.3`
-## [1] -1.233625
+## [1] 0.03013919
 ## 
 ## $`2.3`
-## [1] -1.590378
+## [1] 0.8114819
 ## 
 ## $`2.4`
-## [1]  0.8389939 -0.8891999
+## [1] -2.5208593 -0.6922802
 ## 
 ## $`2.5`
-## [1] -1.1634688  0.4328731</code></pre>
+## [1] -0.6951777 -0.1327793</code></pre>
 </div>
 <div id="debugging" class="section level2">
 <h2>Debugging</h2>
@@ -877,9 +877,9 @@ interaction(f1, f2)</code></pre>
 <pre class="r"><code>x30 &lt;- rnorm(100, 2, 4)
 summary(x30)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  -7.751  -1.769   1.722   1.763   4.764  16.140</code></pre>
+## -7.4118 -0.8466  1.6602  1.7163  4.9656 12.9875</code></pre>
 <pre class="r"><code>str(x30)</code></pre>
-<pre><code>##  num [1:100] 7.7 10.695 0.877 5.401 -6.587 ...</code></pre>
+<pre><code>##  num [1:100] -3.766 -0.956 5.204 1.787 4.626 ...</code></pre>
 </div>
 <div id="random-number-generation" class="section level3">
 <h3>Random number generation</h3>
@@ -921,6 +921,67 @@ sample(1:10, 4)</code></pre>
 #}
 #)
 #summaryRprof()</code></pre>
+</div>
+</div>
+</div>
+<div id="getting-and-cleaning-data" class="section level1">
+<h1>Getting and Cleaning Data</h1>
+<div id="checking-for-and-creating-directories" class="section level2">
+<h2>Checking for and creating directories</h2>
+<pre class="r"><code>getwd()</code></pre>
+<pre><code>## [1] &quot;C:/Users/Sjoerd Gn/Documents/git/datasciencecoursera&quot;</code></pre>
+<pre class="r"><code>if(!file.exists(&quot;data&quot;)){
+  dir.create(&quot;data&quot;)
+}</code></pre>
+</div>
+<div id="getting-data-from-the-web" class="section level2">
+<h2>Getting data from the web</h2>
+<div id="csv" class="section level3">
+<h3>CSV</h3>
+<pre class="r"><code>#fileUrl &lt;- &quot;https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accessType=DOWNLOAD&quot;
+#download.file(fileUrl, destfile = &quot;./data/cameras.csv&quot;, method = &quot;curl&quot;)
+#list.files(&quot;./data&quot;)
+
+dateDownloaded &lt;- date()
+dateDownloaded</code></pre>
+<pre><code>## [1] &quot;Tue Jun 11 00:18:46 2019&quot;</code></pre>
+</div>
+<div id="excel" class="section level3">
+<h3>EXCEL</h3>
+<pre class="r"><code>if(!file.exists(&quot;data&quot;)){dir.create(&quot;data&quot;)}
+#fileUrl &lt;- &quot;https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accessType=DOWNLOAD&amp;bom=true&amp;format=true&quot;
+#download.file(fileUrl, destfile = &quot;./data/cameras.xlsx&quot;, method = &quot;curl&quot;)
+dateDonwloaded &lt;- date()
+
+library(xlsx)</code></pre>
+<pre><code>## Warning: package 'xlsx' was built under R version 3.5.3</code></pre>
+<pre class="r"><code>cameraData &lt;- read.xlsx(&quot;./data/cameras.xlsx&quot;, sheetIndex=1, header=TRUE)
+head(cameraData)</code></pre>
+<pre><code>##                                     address direction          street
+## 1                GARRISON BLVD &amp; WABASH AVE       E/B     Garrison \n
+## 2                    HILLEN ST &amp; FORREST ST       W/B       Hillen \n
+## 3               EDMONDSON AVE &amp; N ATHOL AVE       E/B      Edmonson\n
+## 4                    YORK RD &amp; GITTINGS AVE       S/B      York Rd \n
+## 5                 RUSSELL ST &amp; W HAMBURG ST       S/B       Russell\n
+## 6 S MARTIN LUTHER KING JR BLVD &amp; W PRATT ST       S/B MLK Jr. Blvd \n
+##      crossStreet                 intersection              Location.1
+## 1     Wabash Ave     Garrison \n &amp; Wabash Ave (39.341209, -76.683117)
+## 2     Forrest St       Hillen \n &amp; Forrest St  (39.29686, -76.605532)
+## 3 Woodbridge Ave Edmonson\n  &amp; Woodbridge Ave (39.293453, -76.689391)
+## 4    Gitting Ave     York Rd \n &amp; Gitting Ave (39.370493, -76.609812)
+## 5     Hamburg St      Russell\n  &amp; Hamburg St (39.279819, -76.623911)
+## 6       Pratt St   MLK Jr. Blvd \n &amp; Pratt St (39.286027, -76.627846)
+##   X2010.Census.Neighborhoods X2010.Census.Wards.Precincts Zip.Codes
+## 1                        252                           63     27295
+## 2                        179                          108     13645
+## 3                        213                           75     27950
+## 4                         37                          270     14009
+## 5                        250                          178     27953
+## 6                         11                          168     27953</code></pre>
+<pre class="r"><code>cameraDataSubset &lt;- read.xlsx(&quot;./data/cameras.xlsx&quot;, sheetIndex=1, 
+                              colIndex = 2:3, rowIndex = 1:4)</code></pre>
+<pre class="r"><code>#install.packages('xlsx')</code></pre>
+<p>or use <code>XLConnect</code>, <code>XLConnect vignette</code>, or <code>read.xlsx2</code>. Preferably use <code>.csv</code>s however!</p>
 </div>
 </div>
 </div>

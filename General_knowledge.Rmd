@@ -628,16 +628,37 @@ if(!file.exists("data")){
 ```
 
 ## Getting data from the web
-
+### CSV
 ```{r}
-fileUrl <- "https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accessType=DOWNLOAD"
-download.file(fileUrl, destfile = "./data/cameras.csv", method = "curl")
-list.files("./data")
+#fileUrl <- "https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accessType=DOWNLOAD"
+#download.file(fileUrl, destfile = "./data/cameras.csv", method = "curl")
+#list.files("./data")
 
 dateDownloaded <- date()
 dateDownloaded
 ```
 
+### EXCEL
+
+```{r}
+if(!file.exists("data")){dir.create("data")}
+#fileUrl <- "https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accessType=DOWNLOAD&bom=true&format=true"
+#download.file(fileUrl, destfile = "./data/cameras.xlsx", method = "curl")
+dateDonwloaded <- date()
+
+library(xlsx)
+cameraData <- read.xlsx("./data/cameras.xlsx", sheetIndex=1, header=TRUE)
+head(cameraData)
+
+read.xlsx("./data/cameras.xlsx", sheetIndex=1, 
+                              colIndex = 2:3, rowIndex = 1:4)
+
+```
+
+```{r}
+#install.packages('xlsx')
+```
+or use `XLConnect`, `XLConnect vignette`, or `read.xlsx2`. Preferably use `.csv`s however!
 
 
 
