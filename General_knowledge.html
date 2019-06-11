@@ -706,13 +706,13 @@ lapply(x25, mean)</code></pre>
 ## [1] 2.5
 ## 
 ## $b
-## [1] 0.4012803
+## [1] 0.1152572
 ## 
 ## $c
-## [1] 0.9714967
+## [1] 1.253836
 ## 
 ## $d
-## [1] 4.89394</code></pre>
+## [1] 4.947758</code></pre>
 <pre class="r"><code># Anonymous functions
 x26 &lt;- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2)) 
 lapply(x26, function(elt) elt[,1])</code></pre>
@@ -733,28 +733,28 @@ lapply(x26, function(elt) elt[,1])</code></pre>
 <pre class="r"><code>#str(apply)
 x27 &lt;- matrix(rnorm(50), 10, 5)
 apply(x27, 2, mean) # mean over the columns</code></pre>
-<pre><code>## [1]  0.437710553 -0.002415436  0.223883549 -0.103004595  0.160446491</code></pre>
+<pre><code>## [1]  0.08677628 -0.03750132  0.61831802  0.34145527 -0.04377889</code></pre>
 <pre class="r"><code>apply(x27, 1, sum) # sum over the rows</code></pre>
-<pre><code>##  [1] -4.5635545  3.8147065 -3.5257745  3.7354722  2.3709794  2.2459757
-##  [7] -0.9587655  0.1004261  2.0081990  1.9385412</code></pre>
+<pre><code>##  [1]  2.0655326 -0.2356358 -0.1192374  0.6167105  3.2881627 -1.8233177
+##  [7]  0.4534751  2.0524541  3.7764767 -0.4219272</code></pre>
 <p>These already exist in</p>
 <pre class="r"><code>rowSums(x27)</code></pre>
-<pre><code>##  [1] -4.5635545  3.8147065 -3.5257745  3.7354722  2.3709794  2.2459757
-##  [7] -0.9587655  0.1004261  2.0081990  1.9385412</code></pre>
+<pre><code>##  [1]  2.0655326 -0.2356358 -0.1192374  0.6167105  3.2881627 -1.8233177
+##  [7]  0.4534751  2.0524541  3.7764767 -0.4219272</code></pre>
 <pre class="r"><code>rowMeans(x27)</code></pre>
-<pre><code>##  [1] -0.91271090  0.76294130 -0.70515490  0.74709445  0.47419589
-##  [6]  0.44919514 -0.19175310  0.02008522  0.40163980  0.38770824</code></pre>
+<pre><code>##  [1]  0.41310651 -0.04712715 -0.02384747  0.12334209  0.65763254
+##  [6] -0.36466354  0.09069502  0.41049082  0.75529534 -0.08438545</code></pre>
 <pre class="r"><code>colSums(x27)</code></pre>
-<pre><code>## [1]  4.37710553 -0.02415436  2.23883549 -1.03004595  1.60446491</code></pre>
+<pre><code>## [1]  0.8677628 -0.3750132  6.1831802  3.4145527 -0.4377889</code></pre>
 <pre class="r"><code>colMeans(x27)</code></pre>
-<pre><code>## [1]  0.437710553 -0.002415436  0.223883549 -0.103004595  0.160446491</code></pre>
+<pre><code>## [1]  0.08677628 -0.03750132  0.61831802  0.34145527 -0.04377889</code></pre>
 <pre class="r"><code>apply(x27, 1, quantile, probs = c(0.05, 0.95))</code></pre>
-<pre><code>##           [,1]       [,2]       [,3]      [,4]       [,5]       [,6]
-## 5%  -1.9006832 -0.3261045 -1.6884614 0.1096202 -0.2259256 -0.4399672
-## 95% -0.2526343  1.9168650 -0.1755453 1.1017743  1.2224612  1.6807739
-##           [,7]       [,8]       [,9]      [,10]
-## 5%  -0.7725172 -0.8912993 -0.2532909 -0.9421374
-## 95%  0.1570886  1.7274217  1.3486131  1.6818718</code></pre>
+<pre><code>##          [,1]       [,2]       [,3]      [,4]       [,5]        [,6]
+## 5%  -0.875113 -0.6997414 -0.9848933 -1.414537 -0.4869857 -0.83386703
+## 95%  1.727996  0.6768520  1.3411377  1.640706  2.1389533 -0.07581646
+##           [,7]       [,8]       [,9]     [,10]
+## 5%  -0.8377081 -0.6987751 -0.2321758 -2.000658
+## 95%  1.0866134  1.8802260  1.3979492  1.123295</code></pre>
 </div>
 <div id="mapply" class="section level3">
 <h3>mapply()</h3>
@@ -765,19 +765,19 @@ apply(x27, 2, mean) # mean over the columns</code></pre>
 
 mapply(noise, 1:5, 5:1, 2)</code></pre>
 <pre><code>## [[1]]
-## [1] 1.76933
+## [1] 8.958798
 ## 
 ## [[2]]
-## [1] 5.547618 2.776042
+## [1] 8.609509 3.851589
 ## 
 ## [[3]]
-## [1] 3.637766 3.957131 3.798507
+## [1] 8.895849 4.103743 1.664895
 ## 
 ## [[4]]
-## [1] 4.6984493 1.3475150 0.7566419 2.5010456
+## [1] 0.8654723 3.1001434 1.1244958 1.2304051
 ## 
 ## [[5]]
-## [1]  3.8645405 -0.5163471  1.2740010  1.4748247  1.6631493</code></pre>
+## [1]  0.1547044  2.2192279 -2.3876268  1.5477635  1.1038312</code></pre>
 </div>
 <div id="tapply" class="section level3">
 <h3>tapply()</h3>
@@ -786,7 +786,7 @@ mapply(noise, 1:5, 5:1, 2)</code></pre>
 f &lt;- gl(3,10)
 tapply(x28, f, mean)</code></pre>
 <pre><code>##          1          2          3 
-## -0.3458747  0.4712330  0.3393168</code></pre>
+##  0.2259862  0.4890539 -0.4190039</code></pre>
 </div>
 </div>
 <div id="split" class="section level2">
@@ -800,52 +800,52 @@ interaction(f1, f2)</code></pre>
 ## Levels: 1.1 2.1 1.2 2.2 1.3 2.3 1.4 2.4 1.5 2.5</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2))</code></pre>
 <pre><code>## $`1.1`
-## [1] -0.7347686  1.7018570
+## [1]  0.3487032 -1.4723845
 ## 
 ## $`2.1`
 ## numeric(0)
 ## 
 ## $`1.2`
-## [1] 0.1405306 0.2770183
+## [1] -0.3153521 -0.9546759
 ## 
 ## $`2.2`
 ## numeric(0)
 ## 
 ## $`1.3`
-## [1] 0.03013919
+## [1] 0.6262461
 ## 
 ## $`2.3`
-## [1] 0.8114819
+## [1] -1.653889
 ## 
 ## $`1.4`
 ## numeric(0)
 ## 
 ## $`2.4`
-## [1] -2.5208593 -0.6922802
+## [1]  1.0619321 -0.4998475
 ## 
 ## $`1.5`
 ## numeric(0)
 ## 
 ## $`2.5`
-## [1] -0.6951777 -0.1327793</code></pre>
+## [1]  0.6381761 -0.5518453</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2), drop=TRUE)</code></pre>
 <pre><code>## $`1.1`
-## [1] -0.7347686  1.7018570
+## [1]  0.3487032 -1.4723845
 ## 
 ## $`1.2`
-## [1] 0.1405306 0.2770183
+## [1] -0.3153521 -0.9546759
 ## 
 ## $`1.3`
-## [1] 0.03013919
+## [1] 0.6262461
 ## 
 ## $`2.3`
-## [1] 0.8114819
+## [1] -1.653889
 ## 
 ## $`2.4`
-## [1] -2.5208593 -0.6922802
+## [1]  1.0619321 -0.4998475
 ## 
 ## $`2.5`
-## [1] -0.6951777 -0.1327793</code></pre>
+## [1]  0.6381761 -0.5518453</code></pre>
 </div>
 <div id="debugging" class="section level2">
 <h2>Debugging</h2>
@@ -877,9 +877,9 @@ interaction(f1, f2)</code></pre>
 <pre class="r"><code>x30 &lt;- rnorm(100, 2, 4)
 summary(x30)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -7.4118 -0.8466  1.6602  1.7163  4.9656 12.9875</code></pre>
+## -9.4053 -0.8142  2.0464  1.9599  4.7293 10.0804</code></pre>
 <pre class="r"><code>str(x30)</code></pre>
-<pre><code>##  num [1:100] -3.766 -0.956 5.204 1.787 4.626 ...</code></pre>
+<pre><code>##  num [1:100] -2.392 1.454 -0.779 0.57 -0.288 ...</code></pre>
 </div>
 <div id="random-number-generation" class="section level3">
 <h3>Random number generation</h3>
@@ -944,7 +944,7 @@ sample(1:10, 4)</code></pre>
 
 dateDownloaded &lt;- date()
 dateDownloaded</code></pre>
-<pre><code>## [1] &quot;Tue Jun 11 00:18:46 2019&quot;</code></pre>
+<pre><code>## [1] &quot;Tue Jun 11 23:08:03 2019&quot;</code></pre>
 </div>
 <div id="excel" class="section level3">
 <h3>EXCEL</h3>
@@ -978,10 +978,36 @@ head(cameraData)</code></pre>
 ## 4                         37                          270     14009
 ## 5                        250                          178     27953
 ## 6                         11                          168     27953</code></pre>
-<pre class="r"><code>cameraDataSubset &lt;- read.xlsx(&quot;./data/cameras.xlsx&quot;, sheetIndex=1, 
+<pre class="r"><code>read.xlsx(&quot;./data/cameras.xlsx&quot;, sheetIndex=1, 
                               colIndex = 2:3, rowIndex = 1:4)</code></pre>
+<pre><code>##   direction      street
+## 1       E/B Garrison \n
+## 2       W/B   Hillen \n
+## 3       E/B  Edmonson\n</code></pre>
 <pre class="r"><code>#install.packages('xlsx')</code></pre>
 <p>or use <code>XLConnect</code>, <code>XLConnect vignette</code>, or <code>read.xlsx2</code>. Preferably use <code>.csv</code>s however!</p>
+</div>
+</div>
+<div id="xml" class="section level2">
+<h2>XML</h2>
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
+<p>Extensible Markup Language</p>
+<p>Store structured data, usually from web.</p>
+<p>Components: * Markup * Content</p>
+<p>Tags: * &lt; Start &gt; * &lt;/ End &gt; * &lt; Empty /&gt; Attributes inside &lt;&gt;</p>
+</div>
+<div id="read-xml-into-r" class="section level3">
+<h3>Read XML into R</h3>
+<pre class="r"><code>#install.packages('XML')
+library(XML)</code></pre>
+<pre><code>## Warning: package 'XML' was built under R version 3.5.3</code></pre>
+<pre class="r"><code>fileUrl &lt;- &quot;http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml&quot;
+doc &lt;- xmlTreeParse(fileUrl, useInternal=TRUE)
+rootNode &lt;- xmlRoot(doc)
+xmlName(rootNode)</code></pre>
+<pre><code>## [1] &quot;response&quot;</code></pre>
+<p>I’m at 6:10</p>
 </div>
 </div>
 </div>

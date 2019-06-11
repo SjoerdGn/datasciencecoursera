@@ -660,7 +660,31 @@ read.xlsx("./data/cameras.xlsx", sheetIndex=1,
 ```
 or use `XLConnect`, `XLConnect vignette`, or `read.xlsx2`. Preferably use `.csv`s however!
 
+## XML
+### Introduction
+Extensible Markup Language
 
+Store structured data, usually from web. 
 
+Components:
+* Markup
+* Content
 
+Tags:
+* < Start >
+* </ End >
+* < Empty />
+Attributes inside <>
 
+### Read XML into R
+
+```{r}
+#install.packages('XML')
+library(XML)
+fileUrl <- "http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml"
+doc <- xmlTreeParse(fileUrl, useInternal=TRUE)
+rootNode <- xmlRoot(doc)
+xmlName(rootNode)
+```
+
+I'm at 6:10
