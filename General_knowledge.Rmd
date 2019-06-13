@@ -685,6 +685,37 @@ fileUrl <- "http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xm
 doc <- xmlTreeParse(fileUrl, useInternal=TRUE)
 rootNode <- xmlRoot(doc)
 xmlName(rootNode)
+rootNode[[1]][[1]][[1]]
+#xmlSApply(rootNode, xmlValue)
+xpathSApply(rootNode, "//name", xmlValue)[1:10]
+```
+
+```{r}
+filUrl <- "http://espn.go.com/nfl/team/_/name/bal/baltimore-ravens"
+doc <- htmlTreeParse(fileUrl, useInternal = TRUE)
+scores <- xpathSApply(doc, "//div[@class='score']", xmlValue)
+teams <- xpathSApply(doc, "//div[@class='game-info']", xmlValue)
+scores
+teams
+
+```
+
+
+## JSON
+JavaScript Object Notation
+```{r}
+#install.packages('curl')
+library(jsonlite)
+jsonData <- fromJSON("https://api.github.com/users/SjoerdGn/repos")
+names(jsonData$owner)
+jsonData$owner$login
+
+# to JSON
+myjson <- toJSON(iris, pretty = TRUE)
+#head(cat(myjson), 1)
+
+iris2 <- fromJSON(myjson)
+head(iris2)
 ```
 
 I'm at 6:10

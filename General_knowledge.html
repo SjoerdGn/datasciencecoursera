@@ -706,13 +706,13 @@ lapply(x25, mean)</code></pre>
 ## [1] 2.5
 ## 
 ## $b
-## [1] 0.1152572
+## [1] -0.490916
 ## 
 ## $c
-## [1] 1.253836
+## [1] 0.7539048
 ## 
 ## $d
-## [1] 4.947758</code></pre>
+## [1] 5.350654</code></pre>
 <pre class="r"><code># Anonymous functions
 x26 &lt;- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2)) 
 lapply(x26, function(elt) elt[,1])</code></pre>
@@ -733,28 +733,28 @@ lapply(x26, function(elt) elt[,1])</code></pre>
 <pre class="r"><code>#str(apply)
 x27 &lt;- matrix(rnorm(50), 10, 5)
 apply(x27, 2, mean) # mean over the columns</code></pre>
-<pre><code>## [1]  0.08677628 -0.03750132  0.61831802  0.34145527 -0.04377889</code></pre>
+<pre><code>## [1]  0.38659835 -0.18758377  0.11596493 -0.25444849  0.09864277</code></pre>
 <pre class="r"><code>apply(x27, 1, sum) # sum over the rows</code></pre>
-<pre><code>##  [1]  2.0655326 -0.2356358 -0.1192374  0.6167105  3.2881627 -1.8233177
-##  [7]  0.4534751  2.0524541  3.7764767 -0.4219272</code></pre>
+<pre><code>##  [1] -0.7805932 -2.2109185 -0.4685113  1.6119397  4.9068384  2.1537192
+##  [7]  1.5136896 -3.8307398 -0.9084634 -0.3952227</code></pre>
 <p>These already exist in</p>
 <pre class="r"><code>rowSums(x27)</code></pre>
-<pre><code>##  [1]  2.0655326 -0.2356358 -0.1192374  0.6167105  3.2881627 -1.8233177
-##  [7]  0.4534751  2.0524541  3.7764767 -0.4219272</code></pre>
+<pre><code>##  [1] -0.7805932 -2.2109185 -0.4685113  1.6119397  4.9068384  2.1537192
+##  [7]  1.5136896 -3.8307398 -0.9084634 -0.3952227</code></pre>
 <pre class="r"><code>rowMeans(x27)</code></pre>
-<pre><code>##  [1]  0.41310651 -0.04712715 -0.02384747  0.12334209  0.65763254
-##  [6] -0.36466354  0.09069502  0.41049082  0.75529534 -0.08438545</code></pre>
+<pre><code>##  [1] -0.15611863 -0.44218371 -0.09370225  0.32238794  0.98136769
+##  [6]  0.43074383  0.30273792 -0.76614796 -0.18169269 -0.07904454</code></pre>
 <pre class="r"><code>colSums(x27)</code></pre>
-<pre><code>## [1]  0.8677628 -0.3750132  6.1831802  3.4145527 -0.4377889</code></pre>
+<pre><code>## [1]  3.8659835 -1.8758377  1.1596493 -2.5444849  0.9864277</code></pre>
 <pre class="r"><code>colMeans(x27)</code></pre>
-<pre><code>## [1]  0.08677628 -0.03750132  0.61831802  0.34145527 -0.04377889</code></pre>
+<pre><code>## [1]  0.38659835 -0.18758377  0.11596493 -0.25444849  0.09864277</code></pre>
 <pre class="r"><code>apply(x27, 1, quantile, probs = c(0.05, 0.95))</code></pre>
-<pre><code>##          [,1]       [,2]       [,3]      [,4]       [,5]        [,6]
-## 5%  -0.875113 -0.6997414 -0.9848933 -1.414537 -0.4869857 -0.83386703
-## 95%  1.727996  0.6768520  1.3411377  1.640706  2.1389533 -0.07581646
-##           [,7]       [,8]       [,9]     [,10]
-## 5%  -0.8377081 -0.6987751 -0.2321758 -2.000658
-## 95%  1.0866134  1.8802260  1.3979492  1.123295</code></pre>
+<pre><code>##           [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## 5%  -0.6884105 -2.0152934 -0.8488707 -0.6247043 -0.1257061 -0.6573053
+## 95%  0.7036407  0.9366876  0.8165977  1.3752985  2.4869799  1.7918784
+##           [,7]        [,8]       [,9]      [,10]
+## 5%  -0.8325672 -1.37941179 -0.9691733 -1.8310101
+## 95%  1.1803880  0.03291967  0.6359959  0.8111308</code></pre>
 </div>
 <div id="mapply" class="section level3">
 <h3>mapply()</h3>
@@ -765,19 +765,19 @@ apply(x27, 2, mean) # mean over the columns</code></pre>
 
 mapply(noise, 1:5, 5:1, 2)</code></pre>
 <pre><code>## [[1]]
-## [1] 8.958798
+## [1] 3.594835
 ## 
 ## [[2]]
-## [1] 8.609509 3.851589
+## [1]  3.83494924 -0.06140096
 ## 
 ## [[3]]
-## [1] 8.895849 4.103743 1.664895
+## [1] 5.923993 1.499300 3.879753
 ## 
 ## [[4]]
-## [1] 0.8654723 3.1001434 1.1244958 1.2304051
+## [1] 4.677598 1.847264 2.914298 2.609720
 ## 
 ## [[5]]
-## [1]  0.1547044  2.2192279 -2.3876268  1.5477635  1.1038312</code></pre>
+## [1] 1.310316 3.536303 4.894258 1.265218 3.535985</code></pre>
 </div>
 <div id="tapply" class="section level3">
 <h3>tapply()</h3>
@@ -786,7 +786,7 @@ mapply(noise, 1:5, 5:1, 2)</code></pre>
 f &lt;- gl(3,10)
 tapply(x28, f, mean)</code></pre>
 <pre><code>##          1          2          3 
-##  0.2259862  0.4890539 -0.4190039</code></pre>
+## -0.1115461  0.5171473 -0.0896706</code></pre>
 </div>
 </div>
 <div id="split" class="section level2">
@@ -800,52 +800,52 @@ interaction(f1, f2)</code></pre>
 ## Levels: 1.1 2.1 1.2 2.2 1.3 2.3 1.4 2.4 1.5 2.5</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2))</code></pre>
 <pre><code>## $`1.1`
-## [1]  0.3487032 -1.4723845
+## [1] 0.4283816 0.8697627
 ## 
 ## $`2.1`
 ## numeric(0)
 ## 
 ## $`1.2`
-## [1] -0.3153521 -0.9546759
+## [1] -1.663610 -0.383333
 ## 
 ## $`2.2`
 ## numeric(0)
 ## 
 ## $`1.3`
-## [1] 0.6262461
+## [1] 0.2487418
 ## 
 ## $`2.3`
-## [1] -1.653889
+## [1] -1.045959
 ## 
 ## $`1.4`
 ## numeric(0)
 ## 
 ## $`2.4`
-## [1]  1.0619321 -0.4998475
+## [1] -1.590278 -1.047895
 ## 
 ## $`1.5`
 ## numeric(0)
 ## 
 ## $`2.5`
-## [1]  0.6381761 -0.5518453</code></pre>
+## [1]  0.6744816 -1.4206273</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2), drop=TRUE)</code></pre>
 <pre><code>## $`1.1`
-## [1]  0.3487032 -1.4723845
+## [1] 0.4283816 0.8697627
 ## 
 ## $`1.2`
-## [1] -0.3153521 -0.9546759
+## [1] -1.663610 -0.383333
 ## 
 ## $`1.3`
-## [1] 0.6262461
+## [1] 0.2487418
 ## 
 ## $`2.3`
-## [1] -1.653889
+## [1] -1.045959
 ## 
 ## $`2.4`
-## [1]  1.0619321 -0.4998475
+## [1] -1.590278 -1.047895
 ## 
 ## $`2.5`
-## [1]  0.6381761 -0.5518453</code></pre>
+## [1]  0.6744816 -1.4206273</code></pre>
 </div>
 <div id="debugging" class="section level2">
 <h2>Debugging</h2>
@@ -877,9 +877,9 @@ interaction(f1, f2)</code></pre>
 <pre class="r"><code>x30 &lt;- rnorm(100, 2, 4)
 summary(x30)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -9.4053 -0.8142  2.0464  1.9599  4.7293 10.0804</code></pre>
+## -6.8226 -0.9876  2.3789  1.9481  4.7525 15.3146</code></pre>
 <pre class="r"><code>str(x30)</code></pre>
-<pre><code>##  num [1:100] -2.392 1.454 -0.779 0.57 -0.288 ...</code></pre>
+<pre><code>##  num [1:100] 2.36 4.69 2.92 -2.72 6.21 ...</code></pre>
 </div>
 <div id="random-number-generation" class="section level3">
 <h3>Random number generation</h3>
@@ -944,7 +944,7 @@ sample(1:10, 4)</code></pre>
 
 dateDownloaded &lt;- date()
 dateDownloaded</code></pre>
-<pre><code>## [1] &quot;Tue Jun 11 23:08:03 2019&quot;</code></pre>
+<pre><code>## [1] &quot;Thu Jun 13 14:23:55 2019&quot;</code></pre>
 </div>
 <div id="excel" class="section level3">
 <h3>EXCEL</h3>
@@ -1007,8 +1007,55 @@ doc &lt;- xmlTreeParse(fileUrl, useInternal=TRUE)
 rootNode &lt;- xmlRoot(doc)
 xmlName(rootNode)</code></pre>
 <pre><code>## [1] &quot;response&quot;</code></pre>
-<p>I’m at 6:10</p>
+<pre class="r"><code>rootNode[[1]][[1]][[1]]</code></pre>
+<pre><code>## &lt;name&gt;410&lt;/name&gt;</code></pre>
+<pre class="r"><code>#xmlSApply(rootNode, xmlValue)
+xpathSApply(rootNode, &quot;//name&quot;, xmlValue)[1:10]</code></pre>
+<pre><code>##  [1] &quot;410&quot;                   &quot;1919&quot;                 
+##  [3] &quot;SAUTE&quot;                 &quot;#1 CHINESE KITCHEN&quot;   
+##  [5] &quot;#1 chinese restaurant&quot; &quot;19TH HOLE&quot;            
+##  [7] &quot;3 KINGS&quot;               &quot;3 MILES HOUSE, INC.&quot;  
+##  [9] &quot;3 W'S TAVERN&quot;          &quot;300 SOUTH ANN STREET&quot;</code></pre>
+<pre class="r"><code>filUrl &lt;- &quot;http://espn.go.com/nfl/team/_/name/bal/baltimore-ravens&quot;
+doc &lt;- htmlTreeParse(fileUrl, useInternal = TRUE)
+scores &lt;- xpathSApply(doc, &quot;//div[@class='score']&quot;, xmlValue)
+teams &lt;- xpathSApply(doc, &quot;//div[@class='game-info']&quot;, xmlValue)
+scores</code></pre>
+<pre><code>## list()</code></pre>
+<pre class="r"><code>teams</code></pre>
+<pre><code>## list()</code></pre>
 </div>
+</div>
+<div id="json" class="section level2">
+<h2>JSON</h2>
+<p>JavaScript Object Notation</p>
+<pre class="r"><code>#install.packages('curl')
+library(jsonlite)
+jsonData &lt;- fromJSON(&quot;https://api.github.com/users/SjoerdGn/repos&quot;)
+names(jsonData$owner)</code></pre>
+<pre><code>##  [1] &quot;login&quot;               &quot;id&quot;                  &quot;node_id&quot;            
+##  [4] &quot;avatar_url&quot;          &quot;gravatar_id&quot;         &quot;url&quot;                
+##  [7] &quot;html_url&quot;            &quot;followers_url&quot;       &quot;following_url&quot;      
+## [10] &quot;gists_url&quot;           &quot;starred_url&quot;         &quot;subscriptions_url&quot;  
+## [13] &quot;organizations_url&quot;   &quot;repos_url&quot;           &quot;events_url&quot;         
+## [16] &quot;received_events_url&quot; &quot;type&quot;                &quot;site_admin&quot;</code></pre>
+<pre class="r"><code>jsonData$owner$login</code></pre>
+<pre><code>## [1] &quot;SjoerdGn&quot; &quot;SjoerdGn&quot; &quot;SjoerdGn&quot; &quot;SjoerdGn&quot; &quot;SjoerdGn&quot; &quot;SjoerdGn&quot;
+## [7] &quot;SjoerdGn&quot;</code></pre>
+<pre class="r"><code># to JSON
+myjson &lt;- toJSON(iris, pretty = TRUE)
+#head(cat(myjson), 1)
+
+iris2 &lt;- fromJSON(myjson)
+head(iris2)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<p>I’m at 6:10</p>
 </div>
 </div>
 
