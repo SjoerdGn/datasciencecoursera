@@ -718,4 +718,65 @@ iris2 <- fromJSON(myjson)
 head(iris2)
 ```
 
-I'm at 6:10
+## data.table
+
+Written in C, thus faster 
+
+Inherits from `data.frame`
+
+```{r}
+library(data.table)
+
+DF = data.frame(x=rnorm(9), y=rep(c("a", "b", "c"), each=3), z=rnorm(9))
+head(DF, 3)
+
+DT = data.table(x=rnorm(9), y=rep(c("a", "b", "c"), each=3), z=rnorm(9))
+head(DF, 3)
+
+tables()
+
+DT[2,]
+DT[DT$y=="a"]
+
+# subset with one index is based on the rows instead of the columns
+DT[c(2,3)]
+
+# How to subset columns?
+
+# You can pass a list
+DT[,list(mean(x), sum(z))]
+DT[, table(y)] # subset columns
+
+# Add columns -> change stays! Otherwise, make a copy
+DT[,w:=z^2]
+head(DT)
+
+# Multiple operations
+DT[,m:= {tmp <- (x+z); log2(tmp+5)}]
+head(DT)
+
+DT[, a:=x>0]
+head(DT)
+
+# Plyr like operations -> for each unique value of a
+DT[, b:= mean(x+w), by=a]
+head(DT)
+
+# Count
+DT2 <- data.table(x=sample(letters[1:3],1E5, TRUE))
+DT2[,.N, by=x]
+head(DT2)
+
+# Keys
+DT3 <- data.table(x=rep(c("a", "b", "c"), each = 100), y=rnorm(300))
+setkey(DT3, x)
+head(DT3['a'])
+
+# Joins datatables
+DT4 <- data.table(x=c("a", "a", "b", "dt1"), y = 1:4)
+DT5 <- data.table(x=c("a", "b", "dt2"), z=5:7)
+setkey(DT4, x); setkey(DT5, x)
+merge(DT4, DT5)
+```
+
+It's also faster. 
