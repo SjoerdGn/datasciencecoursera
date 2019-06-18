@@ -70,9 +70,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type="text/css">
 .main-container {
@@ -103,8 +101,6 @@ summary {
 </style>
 
 
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -179,14 +175,23 @@ $(document).ready(function () {
 
 
 
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
 
 <div class="fluid-row" id="header">
 
 
 
 <h1 class="title toc-ignore">Knowledge C_Data_Scientist_Toolbox</h1>
-<h4 class="author"><em>Sjoerd Gnodde</em></h4>
-<h4 class="date"><em>26 februari 2019</em></h4>
+<h4 class="author">Sjoerd Gnodde</h4>
+<h4 class="date">26 februari 2019</h4>
 
 </div>
 
@@ -706,13 +711,13 @@ lapply(x25, mean)</code></pre>
 ## [1] 2.5
 ## 
 ## $b
-## [1] -0.1310232
+## [1] 0.1244544
 ## 
 ## $c
-## [1] 1.277481
+## [1] 0.7679184
 ## 
 ## $d
-## [1] 4.788017</code></pre>
+## [1] 4.968792</code></pre>
 <pre class="r"><code># Anonymous functions
 x26 &lt;- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2)) 
 lapply(x26, function(elt) elt[,1])</code></pre>
@@ -733,28 +738,28 @@ lapply(x26, function(elt) elt[,1])</code></pre>
 <pre class="r"><code>#str(apply)
 x27 &lt;- matrix(rnorm(50), 10, 5)
 apply(x27, 2, mean) # mean over the columns</code></pre>
-<pre><code>## [1] -0.12557792  0.61144650 -0.02188841  0.34101002  0.51014007</code></pre>
+<pre><code>## [1]  0.85959660 -0.58803840 -0.04799080 -0.64207736  0.06131242</code></pre>
 <pre class="r"><code>apply(x27, 1, sum) # sum over the rows</code></pre>
-<pre><code>##  [1]  3.0723060  2.2164871  5.8722091 -2.4547958 -0.8014502  1.8093820
-##  [7]  0.6916652  0.6700055  0.4715734  1.6039201</code></pre>
+<pre><code>##  [1] -1.59952444 -2.24352322 -0.03318633  0.57540218 -0.32151326
+##  [6]  0.16266568 -0.50326764 -3.63423125  4.77183795 -0.74663501</code></pre>
 <p>These already exist in</p>
 <pre class="r"><code>rowSums(x27)</code></pre>
-<pre><code>##  [1]  3.0723060  2.2164871  5.8722091 -2.4547958 -0.8014502  1.8093820
-##  [7]  0.6916652  0.6700055  0.4715734  1.6039201</code></pre>
+<pre><code>##  [1] -1.59952444 -2.24352322 -0.03318633  0.57540218 -0.32151326
+##  [6]  0.16266568 -0.50326764 -3.63423125  4.77183795 -0.74663501</code></pre>
 <pre class="r"><code>rowMeans(x27)</code></pre>
-<pre><code>##  [1]  0.61446119  0.44329742  1.17444183 -0.49095916 -0.16029003
-##  [6]  0.36187640  0.13833303  0.13400111  0.09431468  0.32078402</code></pre>
+<pre><code>##  [1] -0.319904888 -0.448704643 -0.006637267  0.115080435 -0.064302651
+##  [6]  0.032533135 -0.100653528 -0.726846251  0.954367591 -0.149327002</code></pre>
 <pre class="r"><code>colSums(x27)</code></pre>
-<pre><code>## [1] -1.2557792  6.1144650 -0.2188841  3.4101002  5.1014007</code></pre>
+<pre><code>## [1]  8.5959660 -5.8803840 -0.4799080 -6.4207736  0.6131242</code></pre>
 <pre class="r"><code>colMeans(x27)</code></pre>
-<pre><code>## [1] -0.12557792  0.61144650 -0.02188841  0.34101002  0.51014007</code></pre>
+<pre><code>## [1]  0.85959660 -0.58803840 -0.04799080 -0.64207736  0.06131242</code></pre>
 <pre class="r"><code>apply(x27, 1, quantile, probs = c(0.05, 0.95))</code></pre>
-<pre><code>##           [,1]       [,2]       [,3]       [,4]       [,5]      [,6]
-## 5%  -0.7221947 -0.6386821 0.04594465 -1.4084204 -1.0310624 -1.090773
-## 95%  2.7699185  1.7440023 2.41338653  0.6873214  0.7602496  1.467425
-##          [,7]       [,8]      [,9]      [,10]
-## 5%  -1.009735 -0.6924662 -1.114825 -0.6622932
-## 95%  1.441628  1.0062304  1.911980  1.5652850</code></pre>
+<pre><code>##          [,1]       [,2]       [,3]       [,4]      [,5]       [,6]
+## 5%  -1.693913 -0.8547427 -0.8299244 -0.9142608 -2.142735 -0.3871790
+## 95%  0.856396 -0.2781366  0.6425058  2.0777078  1.763880  0.6126616
+##          [,7]       [,8]       [,9]      [,10]
+## 5%  -2.378701 -1.6947275 -0.3559264 -1.2573095
+## 95%  1.080462  0.9507926  1.9042362  0.4394989</code></pre>
 </div>
 <div id="mapply" class="section level3">
 <h3>mapply()</h3>
@@ -765,19 +770,19 @@ apply(x27, 2, mean) # mean over the columns</code></pre>
 
 mapply(noise, 1:5, 5:1, 2)</code></pre>
 <pre><code>## [[1]]
-## [1] 6.9435
+## [1] 5.066223
 ## 
 ## [[2]]
-## [1] 4.768829 6.187725
+## [1] 0.4954977 5.0173927
 ## 
 ## [[3]]
-## [1] 6.384829 3.184001 4.388491
+## [1] 2.909319 5.910605 2.826991
 ## 
 ## [[4]]
-## [1] -1.4836025  1.8394897  0.6609554  2.2205658
+## [1] -0.6966013  1.4573318  0.5117208  4.4862378
 ## 
 ## [[5]]
-## [1]  0.8379081  3.4141175 -0.8182742  2.2168805 -0.3165947</code></pre>
+## [1] -0.431884 -1.076411  3.038254  3.870188  3.967208</code></pre>
 </div>
 <div id="tapply" class="section level3">
 <h3>tapply()</h3>
@@ -786,7 +791,7 @@ mapply(noise, 1:5, 5:1, 2)</code></pre>
 f &lt;- gl(3,10)
 tapply(x28, f, mean)</code></pre>
 <pre><code>##         1         2         3 
-## 0.1301495 0.5586827 0.1447747</code></pre>
+## 0.1056639 0.3981593 0.2331241</code></pre>
 </div>
 </div>
 <div id="split" class="section level2">
@@ -800,52 +805,52 @@ interaction(f1, f2)</code></pre>
 ## Levels: 1.1 2.1 1.2 2.2 1.3 2.3 1.4 2.4 1.5 2.5</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2))</code></pre>
 <pre><code>## $`1.1`
-## [1] -1.093042 -1.899439
+## [1]  0.5355423 -1.7043696
 ## 
 ## $`2.1`
 ## numeric(0)
 ## 
 ## $`1.2`
-## [1] -0.6215556 -1.6145738
+## [1]  0.5956207 -0.8030864
 ## 
 ## $`2.2`
 ## numeric(0)
 ## 
 ## $`1.3`
-## [1] 2.072838
+## [1] 2.068133
 ## 
 ## $`2.3`
-## [1] 0.5974823
+## [1] 0.2834257
 ## 
 ## $`1.4`
 ## numeric(0)
 ## 
 ## $`2.4`
-## [1] -0.6924239  0.3337433
+## [1] -0.8026473  0.1786284
 ## 
 ## $`1.5`
 ## numeric(0)
 ## 
 ## $`2.5`
-## [1] -0.3841492  0.3718316</code></pre>
+## [1] -1.51759815  0.03463436</code></pre>
 <pre class="r"><code>split(x29, list(f1,f2), drop=TRUE)</code></pre>
 <pre><code>## $`1.1`
-## [1] -1.093042 -1.899439
+## [1]  0.5355423 -1.7043696
 ## 
 ## $`1.2`
-## [1] -0.6215556 -1.6145738
+## [1]  0.5956207 -0.8030864
 ## 
 ## $`1.3`
-## [1] 2.072838
+## [1] 2.068133
 ## 
 ## $`2.3`
-## [1] 0.5974823
+## [1] 0.2834257
 ## 
 ## $`2.4`
-## [1] -0.6924239  0.3337433
+## [1] -0.8026473  0.1786284
 ## 
 ## $`2.5`
-## [1] -0.3841492  0.3718316</code></pre>
+## [1] -1.51759815  0.03463436</code></pre>
 </div>
 <div id="debugging" class="section level2">
 <h2>Debugging</h2>
@@ -876,10 +881,10 @@ interaction(f1, f2)</code></pre>
 <p>You can put any object inside other option than <code>summary()</code></p>
 <pre class="r"><code>x30 &lt;- rnorm(100, 2, 4)
 summary(x30)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  -9.390  -1.503   1.398   1.484   4.627  13.511</code></pre>
+<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -11.5801  -0.8686   1.0282   1.0294   4.2079  13.5298</code></pre>
 <pre class="r"><code>str(x30)</code></pre>
-<pre><code>##  num [1:100] -3.43 4.56 -2.7 1.95 6.32 ...</code></pre>
+<pre><code>##  num [1:100] 2.2 -4.58 13.53 6.35 2.35 ...</code></pre>
 </div>
 <div id="random-number-generation" class="section level3">
 <h3>Random number generation</h3>
@@ -944,7 +949,7 @@ sample(1:10, 4)</code></pre>
 
 dateDownloaded &lt;- date()
 dateDownloaded</code></pre>
-<pre><code>## [1] &quot;Mon Jun 17 17:14:18 2019&quot;</code></pre>
+<pre><code>## [1] &quot;Tue Jun 18 20:33:02 2019&quot;</code></pre>
 </div>
 <div id="excel" class="section level3">
 <h3>EXCEL</h3>
@@ -1185,159 +1190,75 @@ merge(DT4, DT5)</code></pre>
 </div>
 <div id="mysql" class="section level1">
 <h1>MySQL</h1>
-<pre class="r"><code>#install.packages(&quot;dbConnect&quot;)
-library(dbConnect)</code></pre>
-<pre><code>## Warning: package 'dbConnect' was built under R version 3.5.3</code></pre>
-<pre><code>## Loading required package: RMySQL</code></pre>
-<pre><code>## Warning: package 'RMySQL' was built under R version 3.5.3</code></pre>
-<pre><code>## Loading required package: DBI</code></pre>
-<pre><code>## Warning: package 'DBI' was built under R version 3.5.3</code></pre>
-<pre><code>## Loading required package: gWidgets</code></pre>
-<pre><code>## Warning: package 'gWidgets' was built under R version 3.5.3</code></pre>
-<pre class="r"><code>ucscDb &lt;- dbConnect(MySQL(), user=&quot;genome&quot;,
-                    host = &quot;genome-mysql.cse.ucsc.edu&quot;)
-result &lt;- dbGetQuery(ucscDb, &quot;show databases;&quot;); dbDisconnect(ucscDb)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>head(result)</code></pre>
-<pre><code>##   Database
-## 1  acaChl1
-## 2  ailMel1
-## 3  allMis1
-## 4  allSin1
-## 5  amaVit1
-## 6  anaPla1</code></pre>
-<pre class="r"><code>hg19 &lt;- dbConnect(MySQL(), user=&quot;genome&quot;, db=&quot;hg19&quot;,
-                  host=&quot;genome-mysql.cse.ucsc.edu&quot;)
-allTables &lt;- dbListTables(hg19)
-length(allTables)</code></pre>
-<pre><code>## [1] 11141</code></pre>
-<pre class="r"><code>dbListFields(hg19, &quot;affyU133Plus2&quot;)</code></pre>
-<pre><code>##  [1] &quot;bin&quot;         &quot;matches&quot;     &quot;misMatches&quot;  &quot;repMatches&quot;  &quot;nCount&quot;     
-##  [6] &quot;qNumInsert&quot;  &quot;qBaseInsert&quot; &quot;tNumInsert&quot;  &quot;tBaseInsert&quot; &quot;strand&quot;     
-## [11] &quot;qName&quot;       &quot;qSize&quot;       &quot;qStart&quot;      &quot;qEnd&quot;        &quot;tName&quot;      
-## [16] &quot;tSize&quot;       &quot;tStart&quot;      &quot;tEnd&quot;        &quot;blockCount&quot;  &quot;blockSizes&quot; 
-## [21] &quot;qStarts&quot;     &quot;tStarts&quot;</code></pre>
-<pre class="r"><code>dbGetQuery(hg19, &quot;select count(*) from affyU133Plus2&quot;)</code></pre>
-<pre><code>##   count(*)
-## 1    58463</code></pre>
-<pre class="r"><code>affyData &lt;- dbReadTable(hg19, &quot;affyU133Plus2&quot;)</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 0 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 1 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 2 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 3 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 4 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 5 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 6 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 7 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 8 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 11
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 12
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 13
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 15
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 16
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 17
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 18
-## imported as numeric</code></pre>
-<pre class="r"><code>head(affyData)</code></pre>
-<pre><code>##   bin matches misMatches repMatches nCount qNumInsert qBaseInsert
-## 1 585     530          4          0     23          3          41
-## 2 585    3355         17          0    109          9          67
-## 3 585    4156         14          0     83         16          18
-## 4 585    4667          9          0     68         21          42
-## 5 585    5180         14          0    167         10          38
-## 6 585     468          5          0     14          0           0
-##   tNumInsert tBaseInsert strand        qName qSize qStart qEnd tName
-## 1          3         898      -  225995_x_at   637      5  603  chr1
-## 2          9       11621      -  225035_x_at  3635      0 3548  chr1
-## 3          2          93      -  226340_x_at  4318      3 4274  chr1
-## 4          3        5743      - 1557034_s_at  4834     48 4834  chr1
-## 5          1          29      -    231811_at  5399      0 5399  chr1
-## 6          0           0      -    236841_at   487      0  487  chr1
-##       tSize tStart  tEnd blockCount
-## 1 249250621  14361 15816          5
-## 2 249250621  14381 29483         17
-## 3 249250621  14399 18745         18
-## 4 249250621  14406 24893         23
-## 5 249250621  19688 25078         11
-## 6 249250621  27542 28029          1
-##                                                                   blockSizes
-## 1                                                          93,144,229,70,21,
-## 2              73,375,71,165,303,360,198,661,201,1,260,250,74,73,98,155,163,
-## 3                 690,10,32,33,376,4,5,15,5,11,7,41,277,859,141,51,443,1253,
-## 4 99,352,286,24,49,14,6,5,8,149,14,44,98,12,10,355,837,59,8,1500,133,624,58,
-## 5                                       131,26,1300,6,4,11,4,7,358,3359,155,
-## 6                                                                       487,
-##                                                                                                  qStarts
-## 1                                                                                    34,132,278,541,611,
-## 2                        87,165,540,647,818,1123,1484,1682,2343,2545,2546,2808,3058,3133,3206,3317,3472,
-## 3                   44,735,746,779,813,1190,1195,1201,1217,1223,1235,1243,1285,1564,2423,2565,2617,3062,
-## 4 0,99,452,739,764,814,829,836,842,851,1001,1016,1061,1160,1173,1184,1540,2381,2441,2450,3951,4103,4728,
-## 5                                                     0,132,159,1460,1467,1472,1484,1489,1497,1856,5244,
-## 6                                                                                                     0,
-##                                                                                                                                      tStarts
-## 1                                                                                                             14361,14454,14599,14968,15795,
-## 2                                     14381,14454,14969,15075,15240,15543,15903,16104,16853,17054,17232,17492,17914,17988,18267,24736,29320,
-## 3                               14399,15089,15099,15131,15164,15540,15544,15549,15564,15569,15580,15587,15628,15906,16857,16998,17049,17492,
-## 4 14406,20227,20579,20865,20889,20938,20952,20958,20963,20971,21120,21134,21178,21276,21288,21298,21653,22492,22551,22559,24059,24211,24835,
-## 5                                                                         19688,19819,19845,21145,21151,21155,21166,21170,21177,21535,24923,
-## 6                                                                                                                                     27542,</code></pre>
-<pre class="r"><code>query &lt;- dbSendQuery(hg19, &quot;select * from affyU133Plus2 where misMatches between 1 and 3&quot;)</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 0 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 1 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 2 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 3 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 4 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 5 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 6 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 7 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 8 imported
-## as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 11
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 12
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 13
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 15
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 16
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 17
-## imported as numeric</code></pre>
-<pre><code>## Warning in .local(conn, statement, ...): Unsigned INTEGER in col 18
-## imported as numeric</code></pre>
-<pre class="r"><code>affyMis &lt;- fetch(query); quantile(affyMis$misMatches)</code></pre>
-<pre><code>##   0%  25%  50%  75% 100% 
-##    1    1    2    2    3</code></pre>
-<pre class="r"><code>affyMisSmall &lt;- fetch(query, n=10); dbClearResult(query)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>dim(affyMisSmall)</code></pre>
-<pre><code>## [1] 10 22</code></pre>
-<pre class="r"><code>dbDisconnect(hg19)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code># #install.packages(&quot;dbConnect&quot;)
+# library(dbConnect)
+# ucscDb &lt;- dbConnect(MySQL(), user=&quot;genome&quot;,
+#                     host = &quot;genome-mysql.cse.ucsc.edu&quot;)
+# result &lt;- dbGetQuery(ucscDb, &quot;show databases;&quot;); dbDisconnect(ucscDb)
+# head(result)
+# 
+# hg19 &lt;- dbConnect(MySQL(), user=&quot;genome&quot;, db=&quot;hg19&quot;,
+#                   host=&quot;genome-mysql.cse.ucsc.edu&quot;)
+# allTables &lt;- dbListTables(hg19)
+# length(allTables)
+# 
+# dbListFields(hg19, &quot;affyU133Plus2&quot;)
+# dbGetQuery(hg19, &quot;select count(*) from affyU133Plus2&quot;)
+# affyData &lt;- dbReadTable(hg19, &quot;affyU133Plus2&quot;)
+# head(affyData)
+# 
+# query &lt;- dbSendQuery(hg19, &quot;select * from affyU133Plus2 where misMatches between 1 and 3&quot;)
+# affyMis &lt;- fetch(query); quantile(affyMis$misMatches)
+# affyMisSmall &lt;- fetch(query, n=10); dbClearResult(query)
+# dim(affyMisSmall)
+# dbDisconnect(hg19)</code></pre>
+</div>
+<div id="hdf5" class="section level1">
+<h1>HDF5</h1>
+<ul>
+<li>Larget datasets</li>
+<li>Range of data types</li>
+<li>Heirarchical data format</li>
+<li>Groups with 0 or more data sets and metadata</li>
+<li>Group header - group name and list of attributes</li>
+<li>Group symbol name Install via bioconductor</li>
+</ul>
+<pre class="r"><code># library(rhdf5)
+# 
+# # if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
+# #     install.packages(&quot;BiocManager&quot;)
+# # BiocManager::install()
+# # BiocManager::install(&quot;rhdf5&quot;)
+# 
+# 
+# created &lt;- h5createFile(&quot;example.h5&quot;)
+# created
+# 
+# created = h5createGroup(&quot;example.h5&quot;, &quot;foo&quot;)
+# created = h5createGroup(&quot;example.h5&quot;, &quot;baa&quot;)
+# created = h5createGroup(&quot;example.h5&quot;, &quot;foo/foobaa&quot;)
+# 
+# h5ls(&quot;example.h5&quot;)
+# 
+# 
+# A = matrix(1:10,nr=5,nc=2)
+# h5write(A, &quot;example.h5&quot;, &quot;foo/A&quot;)
+# B = array(seq(0.1, 2.0, by=0.1), dim=c(5,2,2))
+# attr(B, &quot;scale&quot;) &lt;- &quot;liter&quot;
+# h5write(B, &quot;example.h5&quot;, &quot;foo/foobaa/B&quot;)
+# h5ls(&quot;example.h5&quot;)
+# 
+# df &lt;- data.frame(1L:5L, seq(0,1,length.out = 5), 
+#                  c(&quot;ab&quot;, &quot;cde&quot;, &quot;fghi&quot;, &quot;a&quot;, &quot;s&quot;), stringsAsFactors = FALSE)
+# 
+# h5write(df, &quot;example.h5&quot;, &quot;df&quot;)
+# h5ls(&quot;example.h5&quot;)
+# df
+# 
+# h5read(&quot;example.h5&quot;, &quot;df&quot;)
+# 
+# h5write(c(12,13,14), &quot;example.h5&quot;, &quot;foo/A&quot;, index = list(1:3,1))
+# h5read(&quot;example.h5&quot;, &quot;foo/A&quot;) # index can also be passed to h5read</code></pre>
 </div>
 
 
